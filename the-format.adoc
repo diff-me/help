@@ -4,9 +4,8 @@ This is the diff.me substrate, version 2. Every post is a git commit in a
 repository its author owns on GitHub. This document says exactly what each
 thing a person does on diff.me is in git, so that diff.me, a person with a
 terminal, or anything built on git can read and write it. It replaces the
-file-per-post format diff.me first built (in git history before D-077), whose
-only repositories were pre-production and are remade. Decisions: D-067 to
-D-071 in DECISIONS.md.
+file-per-post format diff.me first built, whose only repositories were
+pre-production and are remade.
 
 Three rules hold throughout:
 
@@ -27,7 +26,7 @@ engineers who want it.
 == 1. Repositories
 
 Each person has two, created by diff.me on their GitHub account at signup
-(D-061) and granted to the diff.me App alone:
+and granted to the diff.me App alone:
 
 [%header,cols="4,4,5"]
 |===
@@ -159,7 +158,7 @@ unfollowing removes the line, and moving one rewrites the order. A branch withou
 the file follows no topic. A line that is not a key, a repeat, and a line past the
 hundredth are findings and are left out; the order of the rest is the order of the
 file. The file is private because following a subject is a choice about what a person
-reads and not something they publish (D-095). diff.me reads it to raise the posts
+reads and not something they publish. diff.me reads it to raise the posts
 on those topics in Explore for that person and to draw the topics they follow as the
 chips above it, in this order, and counts, for each topic, how many people follow it,
 a number and never the names.
@@ -176,7 +175,7 @@ diff.me reads two keys.
 
 | `read-receipts`
 | `on`
-| Whether the person lets people know when they have read their messages (D-099). Absent, or any other value, is off.
+| Whether the person lets people know when they have read their messages. Absent, or any other value, is off.
 |===
 
 `not-discoverable` is a statement about what diff.me shows and not about the
@@ -394,7 +393,7 @@ My latest posts on diff.me appear here.
 Staff engineer at Acme, 2021 to now. Led the compiler team.
 ----
 
-*A project* is any work a person makes (D-096), not only code, and is an open
+*A project* is any work a person makes, not only code, and is an open
 block with the role `project`: a bold line that is its title, then, each in a
 paragraph of its own and in any order, a line in emphasis that says when (free
 words, "Spring 2026"), its words, a link (`+https://github.com/owner/name[owner/name]+`)
@@ -444,7 +443,7 @@ in infrastructure, remote"). A part that breaks its limit is absent.
 characters, with no space and no user name or password, in the order of their
 numbers; a number that is missing is skipped.
 
-*Where a profile begins, and where the place and links go (D-096).* A person's
+*Where a profile begins, and where the place and links go.* A person's
 name and their one line start from their GitHub profile: when they join, the first
 README holds their GitHub display name as the title and their bio as the headline,
 each made one line and cut to its limit (80 and 160 characters), read with the
@@ -463,7 +462,7 @@ before then.
 lines at its ends: the person's words, in AsciiDoc, with sections of their own
 (any `==` heading and what follows it). Lines are read as one line feed each,
 however the file ends them. The page is what a person writes with the composer on
-their profile (D-097), and the blocks of their work in it are ordinary AsciiDoc
+their profile, and the blocks of their work in it are ordinary AsciiDoc
 carrying a role, which diff.me draws and GitHub shows as the words they are:
 
 [%header,cols="3,5,5"]
@@ -733,7 +732,7 @@ that are no topic are left out, and a trailer with none left is a bad trailer.
 
 An edit carries the topics of its version as it carries the content warning (<<s3-5,3.5>>): one
 that carries none removes them. The header attribute `:keywords:` that a long piece's
-words once carried (D-088) is no longer read, and diff.me does not write it: a line that
+words once carried is no longer read, and diff.me does not write it: a line that
 holds it is words like any other.
 
 A reader of the repository may treat topics as it likes. diff.me's index keeps each
@@ -770,8 +769,8 @@ reply, a quote and a repost have no poll, and neither has an edit, whatever line
 carries.
 
 A poll ends its length after the post's time: the time diff.me lists the post at, which is
-the commit's own time, or the moment diff.me first saw the commit if that came earlier
-(spec/index/README.md). Readers vote while it lasts (<<s6-3,§6.3>>). A poll stays as it was posted:
+the commit's own time, or the moment diff.me first saw the commit if that came earlier.
+Readers vote while it lasts (<<s6-3,§6.3>>). A poll stays as it was posted:
 its question, its choices and its length are the first commit's, so diff.me reads no edit
 of a post that asks a poll, and an edit commit that names one is reported and changes
 nothing. The post is taken back as any post is (<<s3-4,§3.4>>).
@@ -815,7 +814,7 @@ she taught the rest of us how it worked.
 Recommends: https://github.com/sarah/.diffme
 ----
 
-A recommendation is a testimonial (D-096): someone's own words about a person, and
+A recommendation is a testimonial: someone's own words about a person, and
 who wrote them. The message is those words and the `Recommends:` line, and nothing
 else; diff.me adds, edits and summarises nothing of it. There is no relationship
 field. A recommendation written before that carries a `Context:` line (the writer's
@@ -837,7 +836,7 @@ person decides, in their own repository, what their profile shows.
 A commit on the sender's private `messages` branch whose message is the
 message, with `+To: <recipient's repository URL>+`; a message in a group
 carries one `To:` per recipient. Each person keeps their own half; diff.me
-shows both halves as one conversation (R14). A commit that gives or takes back a
+shows both halves as one conversation. A commit that gives or takes back a
 vote (<<s6-3,§6.3>>) is no message.
 
 [#s6-1]
@@ -940,13 +939,13 @@ attributes: `+{author}+`, `+{revdate}+`, `+{revnumber}+` (the version's number).
 
 * A commit diff.me writes for a person goes through GitHub's
 `createCommitOnBranch` with the person's own token and a `fileChanges`
-object that is always present, empty when no file changes (U7). GitHub
-makes the person the author and signs as committer (R15).
+object that is always present, empty when no file changes. GitHub
+makes the person the author and signs as committer.
 * A person may write from a terminal with their own key. Keys they register
 are listed in `+.diffme/allowed_signers+` on the public `main`, in git's
-format, so a clone verifies their signatures with plain git (R16).
+format, so a clone verifies their signatures with plain git.
 * A commit counts as the person's when GitHub signed it with the person's
-account as author, or when a registered key signed it (D-042, D-063, D-064).
+account as author, or when a registered key signed it.
 Unsigned commits are shown but count for nothing.
 * Notes are written by git push with the person's token and count by the
 repository they live in: only the person, through diff.me, writes there.
@@ -971,8 +970,8 @@ hchar         = %x61-7A / DIGIT               ; a-z, 0-9
 ----
 
 A handle is 1 to 39 characters of `+[a-z0-9-]+`, with no leading, trailing or
-doubled hyphen (D-034). A handle MUST NOT be a Windows device name: `con`,
-`prn`, `aux`, `nul`, `com1` to `com9`, or `lpt1` to `lpt9` (D-044).
+doubled hyphen. A handle MUST NOT be a Windows device name: `con`,
+`prn`, `aux`, `nul`, `com1` to `com9`, or `lpt1` to `lpt9`.
 
 Handles outside this grammar are never issued, and neither are the route
 words a host reserves beyond the grammar. diff.me's route words are:
@@ -982,11 +981,11 @@ rules search settings sign-in sign-out signin signout signup static status
 support switch threads you www admin root system staff moderation messages
 notifications saved write topics`. Every top-level path diff.me's web answers that
 this grammar admits is among them, so no handle's profile is shadowed by a
-page (D-058). `diff-me` is diff.me's own profile (D-036). A second host keeps
+page. `diff-me` is diff.me's own profile. A second host keeps
 its own list. The list governs issuance, not reading: an address or reference
 that names a route word, on any host, names that handle.
 
 A handle equal to a forge login is reserved to that forge account; a changed
 handle is retired, never reissued, and its addresses redirect permanently to
-the new handle. These are platform records (D-005); the substrate fixes only
+the new handle. These are platform records; the substrate fixes only
 the grammar and the device names.

@@ -177,9 +177,10 @@ git show origin/main:.diffme/allowed_signers > allowed_signers
 git -c gpg.ssh.allowedSignersFile=allowed_signers log --show-signature
 ----
 
+[#a-commit-nobody-signed]
 == A commit nobody signed
 
-diff.me reads every commit on `posts`. One that is not signed by GitHub as you, or by a key that counts, is not counted as yours. diff.me shows it on your own page, and to anyone who opens its address. It is in no one else’s list, and no reply, quote, repost, mention, reaction count or notification comes of it.
+diff.me reads every commit on `posts`. One that is not signed by GitHub as you, or by a key that counts, is not counted as yours. diff.me shows it on your own page, and at its address to anyone who may see your posts. It is in no one else’s list, and no reply, quote, repost, mention, reaction count or notification comes of it.
 
 == Taking a post back, and deleting one
 
