@@ -1,0 +1,38 @@
+= Polls
+
+A post can ask a poll: a question with two to four choices that people vote on. The author sees who voted for what. Everyone else sees only the totals, and only when they are allowed to.
+
+== Writing one
+
+Open the box, press ⋯ and choose Poll. Your words are the question. Under them are the choices (three boxes to start; “Add a choice” makes a fourth) and “Poll lasts”, which is 1 day, 3 days, 1 week or 2 weeks, with 1 week chosen first. Each choice is up to 30 characters, no two are the same, and at least two are needed. diff.me checks this before it sends anything and says what is wrong in plain words. “Remove poll” takes the poll off the post you are writing.
+
+Under the fields the box says: “You will see who voted for what. Voters are told that before they vote.” A poll can be asked on a new post only, not on a reply or a quote. A draft keeps its poll, as xref:drafts.adoc[Drafts] says.
+
+== Voting
+
+Before you vote, you see the choices as buttons, the line “Only Ada sees how you vote. Others see the totals.” with the author’s own name, and how long is left. You don’t see any totals yet, because seeing them first would sway your vote. You can’t vote in your own poll, and you can’t vote if its author chose xref:who-can-reply.adoc[who can reply] and you aren’t one of them; the poll says so. Signed out, the choices are there, and pressing one asks you to sign in.
+
+After you vote, each choice shows a bar, a percentage and its count, with “your vote” on yours, how many votes there are in all and how long is left. “Undo your vote” takes yours back, and you can vote again, until the poll ends.
+
+Your vote is kept in your private space on GitHub, addressed to the author, as a message is. Nobody else can open it. The totals everyone sees are counts only.
+
+== Who sees what
+
+* *Someone who has not voted* sees no totals until the poll ends.
+* *Someone who has voted* sees the totals.
+* *The author* sees the totals all along. On the post’s own page a “Who voted” section lists the people, a tab for each choice with its count, each with a Message button, so a question asked of peers can be followed up. Only the author sees it, and everyone who voted was told they would.
+* *When the poll has ended*, everyone sees the final results, signed out too, and there is nothing left to press.
+
+The author’s totals leave out the people they block or mute, so they match the list of voters they see. The totals everyone else sees don’t change when an author blocks someone.
+
+== The end
+
+When a poll ends, its author and each person who voted in it (and hasn’t taken the vote back) are told, in Notifications: “Your poll has ended.” or “A poll you voted in has ended.” Each opens the post. A page that was open at the end doesn’t change by itself. A vote pressed after the end is refused, and the poll then shows its final results. Undo is not offered after the end.
+
+== After it is posted
+
+A poll’s question, choices and length stay as they were, so a post that asks a poll has no Edit. You can still take it back like any post, as xref:editing-and-taking-back.adoc[Editing and taking back] says.
+
+== When a poll is quoted or passed on
+
+A quote or a repost of a poll shows the post as a small linked card, with one more line: “Poll · 3 days left”, or “Poll · Final results” once it has ended. The card has no choices, totals or buttons. Pressing it opens the post, where you vote.

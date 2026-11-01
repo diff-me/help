@@ -1,0 +1,40 @@
+= Your profile and your page
+
+Your profile is what people see when they open your name. It has two parts: a strip at the top that answers the questions a visitor has in the first seconds, and, under it, a page you write yourself.
+
+== The strip
+
+The strip is the same for everyone, and each line is there only when it is true.
+
+* *Who is this?* Your name and picture, with “Follows you” beside your name when you follow the person looking.
+* *What are you about, in your words?* Your line, one sentence under your name.
+* *Are you who you seem?* Your handle, “On GitHub since” the year, as a link to your GitHub account, how many people you follow, how many follow you and how many recommendations you show.
+* *What do you write about?* The topics of your own posts, as small tags.
+* *How do you relate to the visitor?* A few faces of people the visitor follows who follow you.
+* *What can they approach you about?* “Open to”, just above Message, when you have said.
+* *What can they do?* Follow (“Follow back” when you follow them), Message and ⋯.
+
+You change your name, your line and Open to with “Edit your name and line” on your own profile. Your name is shown beside your picture, and if you leave it empty your handle is your name. Open to is optional: say what you are looking for, like “Staff and principal roles, remote”, and people can find you by it when they search. “Start from my GitHub profile” on that form fills your name and line from your GitHub profile, for you to change; nothing is kept until you press Save. Joining does the same when you first join.
+
+Your own ⋯ holds Your totals and Settings. Your totals shows, over 7 days, 28 days or all your time on diff.me, how many people your posts reached and how many opened them. Only you see it, and it counts people, never says who; a number under ten is shown as “Fewer than 10”. The page explains how the counting works.
+
+== Your page
+
+Under the strip is your page, which is yours to write. Press “Write your page”, or “Edit” once you have written it, and a box opens in place, headed “Writing your page”, with the box and the blocks you use to write a post. Press “Update your page” to save it, or Cancel.
+
+Besides words, you can place blocks that diff.me fills in for you:
+
+* *A piece*: one of your long pieces, with its title and how long it takes to read.
+* *A project*: any work you want to show, of any kind, not only software. It has a title, words, when it happened, a link, and up to six pictures, each with a description. When the link is to a repository on GitHub, the project also shows its language and when it was last updated, as GitHub says, and how many of your posts link to it.
+* *Recommendations*: the ones you have chosen to show.
+* *Experience* and *Education*: a heading, with your own words under it.
+
+== Before you have written one
+
+Until you write your page, diff.me makes one from your work, if you have any: your newest piece and the recommendations you show. Only you see a note that says so, with “Write your page”. If you have no work yet, the page shows the short line diff.me wrote when you joined, and your note says your page is empty until you write it.
+
+== The tabs
+
+Under your page, three tabs: Posts, Replies and “Recommendations given”, which lists the recommendations you wrote about other people that they chose to show; you also see those that are not shown. Reactions you have given are not listed; they show where you gave them.
+
+What your profile shows to someone who isn’t connected to you depends on xref:who-can-find-you.adoc[who can find you], and xref:recommendations.adoc[Recommendations] explains what is shown of those you receive.

@@ -1,0 +1,17 @@
+= Editing and taking back
+
+You can change a post after you have posted it, or take it back. In both cases what you wrote before is not destroyed.
+
+== Editing
+
+In the ⋯ menu of your own post, Edit opens it on the writing page, headed “Edit post”. You can change the words, the title, the pictures, the content warning and the topics. Press “Save changes” to publish the new version.
+
+What you can’t change after posting is who can reply, who it was written with, and a poll, which is why a post that asks a poll has no Edit. A repost has no Edit either, because it has no words of its own.
+
+Once a post has been edited, “edited” appears beside its time. It opens “Earlier versions”, which lists every version, newest first, each with its words in full and the day it was written. The post’s ⋯ menu has “Show earlier versions” too. Anyone who can read the post can read the earlier ones, on diff.me and on GitHub.
+
+== Taking back
+
+In the ⋯ menu of your own post, “Take this post back” asks for a reason, which is optional, and then “Take it back”. The post stays where it is and says that you took it back, with your reason if you gave one: “Ada took this post back. Their reason: …”.
+
+diff.me shows the post as taken back, in the place the post was, and leaves out its words. The words themselves stay in your space’s history on GitHub, where anyone who can open your public space can read them, as xref:who-can-find-you.adoc[Who can find you] says. Someone who copied the post before you took it back keeps their copy. Taking a post back doesn’t take back a draft, a reaction or anything else of yours.

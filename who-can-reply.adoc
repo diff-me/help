@@ -1,0 +1,27 @@
+= Who can reply
+
+When you write a post, you choose who can reply to it. The choice is in the row under the box, and it is for that post only.
+
+== The three choices
+
+* *Everyone.* Anyone can reply. This is the choice if you don’t pick another.
+* *People you follow.* Only the people you follow can reply.
+* *People you mention.* Only the people you name with an @ in your words can reply.
+
+You can always reply to your own post. A reply to a reply carries no choice of its own, and neither does a quote; a quote has the whole row, so you choose for it as for a post.
+
+== What a reader sees
+
+Someone who cannot reply sees where the box would be a line that says who can: “Only people Ada follows can reply to this post.”
+
+== What the choice does and doesn’t do
+
+The choice is a statement about what diff.me lists. GitHub can’t stop a person writing a reply in their own space, so someone who writes one anyway is not stopped. diff.me lists it under no post, counts it in no post’s replies and tells you nothing of it. It stays on the writer’s own profile, as a reply to a post they could not reply to, and the card says so.
+
+Who is allowed is read when replies are listed, not when they were written. If you later follow the person, or edit the post to mention them, their reply is listed from then on.
+
+The choice is fixed when you post. An edit can’t widen or narrow it.
+
+== Hiding a reply
+
+On a reply to your post, the ⋯ menu has “Hide this reply”, and “Show this reply again” once it is hidden. Hidden replies are behind “Hidden replies” under the post. The person who wrote it isn’t told. Because this is kept in your public space on GitHub, it is public, as it is on X.

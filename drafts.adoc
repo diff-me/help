@@ -1,0 +1,23 @@
+= Drafts
+
+A draft is words you have written and not posted yet. You choose whether to keep it, and only you can see it.
+
+== Keeping or discarding
+
+When you leave a box that has words in it, diff.me asks “Save this as a draft?” with three choices: Save draft, Discard, and Keep writing. Keep writing puts you back in the box. Escape does the same. This happens in Home’s box, in the window, on the writing page, and in the boxes for a reply or a quote. A box with nothing in it asks nothing.
+
+Without the script, the plain form has a Save draft button beside Preview.
+
+== What a draft keeps
+
+A draft keeps the post as you would have posted it: its words and title, its pictures with their descriptions, the content warning, who it is written with, its topics, and who can reply. A draft of a new post keeps its poll too, as xref:polls.adoc[Polls] says. A draft of a reply or a quote keeps what it answers or quotes, and is listed as “A reply to @ada” or “A quote of @ada”. Opening a draft and posting it publishes the words and options you then have in the box, and the draft goes. A change you began to a post is kept the same way and listed as “A change to a post”.
+
+If you write several posts in the window and save them, each becomes a draft of its own.
+
+== Where drafts are
+
+On the writing page, “Drafts” in the bar goes to “Your drafts”: each draft by its title or its first words, when you saved it (or “Writing now”), and a Discard button. Its name opens it again where you left off, a reply or a quote in the window and a post on the writing page. With none, the list says so.
+
+== Who can see them
+
+Only you, and diff.me. A draft is kept in your private space on GitHub, which nobody else can open, as xref:who-can-find-you.adoc[Who can find you] says. Saving again keeps a new version of the draft. Discarding takes it off your list; its earlier versions stay in the history of your private space on GitHub.

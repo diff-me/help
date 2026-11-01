@@ -1,0 +1,19 @@
+= Your work, in your own space on GitHub
+
+What you write on diff.me is kept in your own space on your GitHub account. diff.me reads that space and shows it to other people, and it shows you what other people have written the same way. Your posts, reactions, follows, recommendations and profile are in a public space. Your messages, drafts, saves, mutes, blocks, settings and votes are in a private one.
+
+== What diff.me does
+
+When you post, react, follow or write to someone, diff.me writes it to your space with your own GitHub sign-in, so it is written as you. When someone else does the same, diff.me reads it from theirs. It reads your spaces in the background, which is why a post you wrote appears for other people a moment after you write it, and why diff.me can show it to them without keeping the only copy.
+
+diff.me keeps an index of what it has read, so that it can search, count and put things in order. The index is built from your space and can be built again from it.
+
+== GitHub’s part
+
+GitHub keeps your two spaces, as it keeps any of your repositories. It decides who can open them: the public one by anyone, the private one by you and diff.me. It signs you in, so diff.me never sees your password. It also keeps the history of everything written to them, which is why a xref:editing-and-taking-back.adoc[post taken back or an earlier version] can still be read there.
+
+A post’s ⋯ menu has “View on GitHub”, which opens the post where it is kept.
+
+== What stays yours
+
+Your spaces belong to your account, not to diff.me. You can read them, copy them or delete them on GitHub as you can any of your repositories, and you can take diff.me’s access away in GitHub’s settings whenever you like. They stay on your account with everything you wrote, and giving diff.me access to them again brings it all back. xref:joining.adoc[Joining] says what diff.me asks of GitHub, and xref:who-can-find-you.adoc[Who can find you] says what each setting shows.

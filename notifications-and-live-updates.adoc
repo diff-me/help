@@ -1,0 +1,33 @@
+= Notifications and live updates
+
+Notifications are what other people do that concerns you, in one place, and the page itself tells you what has arrived while it is open. Nothing else tells you anything.
+
+== What tells you
+
+diff.me tells you when someone:
+
+* replies to one of your posts, quotes it or passes it on;
+* mentions you in a post;
+* reacts to one of your posts. However many people react to a post, it is one line, naming the newest one or two and counting the rest;
+* follows you, or asks to follow you when your space is private, or approves your request to follow them;
+* writes you a recommendation that is waiting for you to show or dismiss it;
+* looks at a report you made. The notification says how it ended, and names no one;
+* ends a poll: a poll of yours, or one you voted in.
+
+A notification of a person you block or mute is left out. If someone is not discoverable, a notification of their reaction or follow counts them without naming them, unless you are connected, which xref:who-can-find-you.adoc[Who can find you] explains.
+
+diff.me never tells anyone that you opened their post or their profile. The author of a post can see how many people it reached and how many opened it, in Your totals, and never who.
+
+== Notifications
+
+Notifications is in the rail, with the number of new ones beside it. The page has two tabs. All lists everything above, newest first. Mentions lists only the times someone mentioned you. A line you have not seen yet is marked New.
+
+Opening the page marks what you see as seen, and the number in the rail goes down. diff.me keeps when you last looked, so it holds on every device you use. Without the script, the page has a button, “Mark these as seen”.
+
+If someone has asked to follow you, “Follow requests” appears at the top of the page, with the way to approve or turn them down.
+
+== What arrives while a page is open
+
+When you have joined, diff.me keeps listening for what changes while a page is open. A new notification comes in at the top of the page and the number in the rail moves. On Home, new posts wait behind a pill that says how many came; pressing it draws the list again from the top, so nothing you were reading moves by itself. Following, muting or blocking someone changes what you hear within half a minute at most.
+
+If the page loses its connection, it reads again when the connection is back, because nothing is kept for a page that is away. A page that was open when a poll ended does not change by itself; the poll shows its final results the next time the page is read.

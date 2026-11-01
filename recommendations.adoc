@@ -1,0 +1,23 @@
+= Recommendations
+
+A recommendation is one person’s word about another, in their own words and about anything, not only work. It carries weight because of who wrote it, because the words are theirs, and because the person it is about chooses to show it.
+
+== Writing one
+
+Open the person’s profile, press ⋯ and choose Recommend. The page asks one question, “What is Ada like to work with, or to know? In your own words.” and says that Ada will choose whether to show it on their profile, and that you can take it back whenever you like. Press “Send recommendation”. You can’t recommend yourself, and an empty one isn’t sent. If you aren’t signed in, you are asked to sign in first.
+
+A recommendation is kept in your public space on GitHub, like a post, with your name on it. diff.me adds and changes nothing of it, so anyone can read it there, whether or not the person shows it on diff.me.
+
+If you want one for yourself, “Ask someone who knows your work”, in your Recommendations section, gives you the link to the page where it is written, to send to whoever you choose. diff.me sends nothing to anyone.
+
+== What the person chooses
+
+A recommendation about you waits for you. You are told in Notifications, “wrote you a recommendation”, with the words in full and two buttons. “Show on my profile” puts it on your profile, in Recommendations, with its writer’s name, and counts it in the strip. “Dismiss” keeps it off. Until you choose, it is not shown.
+
+You can change your mind. On your own profile, a recommendation you show has “Take off my profile”, and one you dismissed is listed under Dismissed with “Show on my profile”. Recommendations waiting for you are listed there too.
+
+Recommendations you show lift your posts a little in how Explore orders them, as xref:how-explore-is-ordered.adoc[How Explore is ordered] says. You can also place the recommendations you show where you like on xref:your-profile-and-your-page.adoc[your page].
+
+== Taking yours back
+
+On the recommendations you gave, which is a tab on your profile, “Recommendations given”, each one says whether it is shown on their page, and has “Take this recommendation back”. A recommendation you took back is no longer shown. Its words stay in your space’s history on GitHub, as with xref:editing-and-taking-back.adoc[a post taken back].

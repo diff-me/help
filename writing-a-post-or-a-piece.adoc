@@ -1,0 +1,38 @@
+= Writing a post or a piece
+
+A short post and a long piece are written in the same box. There is no mode to choose: if you give your words a title, they read as a piece, and if you don’t, they are a post.
+
+== Where the box is
+
+The box is at the top of Home. The Write button in the rail opens the same box in a window over the page you are on, so you come back to that page when you are done. Replying to a post and quoting one use the same box too. On Home or in the window, “Full page” carries what you have written to a page of its own, with room for a long piece. Control+Enter (Command+Enter on a Mac) posts from the keyboard.
+
+== The words
+
+The first line can be a title. Select it and choose Title in the small bar that appears over selected words, or start the line with `= `. Choose Title again to make it words.
+
+Formatting comes over the words you select: Bold, Italic, Code, Link, Heading and Quote. Press + beside an empty line, or type a slash on it, to add a block: a Heading, a Picture, Code, a Table, a Quote, a Note, a List or a Divider. Typing @ and a few letters offers people, so you can mention them; a person who is not discoverable is offered only to the people they are connected to, as xref:who-can-find-you.adoc[Who can find you] says.
+
+== Pictures and code
+
+Picture adds a picture, up to eight in a post, each up to 25 MB, as a PNG, JPEG, GIF, WebP or SVG. Each picture needs a description, which people who cannot see it hear in its place, or you say that it is only decoration. Code puts a block of code where the caret is.
+
+== Under the box
+
+Under the box is one row. Beside Picture and Code, ⋯ holds:
+
+* *Content warning.* Readers see your words before they open the post.
+* *Written with.* People on diff.me who wrote the post with you, by handle. Their names show on the post, and GitHub shows them too.
+* *Topics.* Up to five, so that people can find the post by what it is about.
+* *Poll.* On a new post only. xref:polls.adoc[Polls] says how it works.
+
+The row also holds the choice of xref:who-can-reply.adoc[who can reply], and Post. A choice you have set shows on the row so you can see it.
+
+== Several posts at once
+
+The + on the row opens the window to add another post under the one you have. In the window, + adds another under the last. Each is written in its own box with its own options. “Post all” publishes them in order, each after the first as a reply to the one before, so they read as a thread. A post can be taken out of the window while there is more than one. If one is refused, it and the ones after it stay in the window.
+
+== Leaving the box
+
+If you leave a box that has words in it, diff.me asks whether to save them as a draft or discard them. xref:drafts.adoc[Drafts] says what a draft keeps.
+
+Without the script, the same box is a plain form with plain fields for the options, and a Preview button.

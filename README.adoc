@@ -4,7 +4,22 @@ What diff.me does, what it asks of GitHub, and who can see what, in articles gro
 
 == How diff.me works
 
+* xref:your-work-in-your-own-space.adoc[Your work, in your own space on GitHub]
 * xref:joining.adoc[Joining, and what diff.me asks of GitHub]
+* xref:notifications-and-live-updates.adoc[Notifications and live updates]
+
+== Writing
+
+* xref:writing-a-post-or-a-piece.adoc[Writing a post or a piece]
+* xref:who-can-reply.adoc[Who can reply]
+* xref:drafts.adoc[Drafts]
+* xref:polls.adoc[Polls]
+* xref:editing-and-taking-back.adoc[Editing and taking back]
+
+== Your profile
+
+* xref:your-profile-and-your-page.adoc[Your profile and your page]
+* xref:recommendations.adoc[Recommendations]
 
 == Finding people and work
 
