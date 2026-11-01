@@ -29,5 +29,5 @@ Your messages, drafts and saves, who you mute and block, your settings, the topi
 == What none of these changes
 
 * Editing a post keeps every earlier version. Anyone who can read the post can read those too, on diff.me and on GitHub.
-* Taking a post back shows it as taken back on diff.me, but its words stay in your space’s history on GitHub.
+* Taking a post back shows it as taken back on diff.me, but its words stay in your space’s history on GitHub. To remove words for good, delete them from your space, as xref:your-posts-with-git.adoc[Your posts with git] says.
 * Someone who copied your space before you changed anything keeps their copy, as with anything that has been public.

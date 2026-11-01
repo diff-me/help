@@ -1,25 +1,47 @@
 = Leaving diff.me, and coming back
 
-You can leave diff.me whenever you like, and nothing you wrote is deleted by it. Your two spaces on GitHub stay yours.
+You can leave diff.me whenever you like, and nothing you wrote is deleted by it. Your two spaces on GitHub are not touched. What leaving does to what diff.me holds is set out here, including the small part it keeps.
 
 == Leaving
 
 In Settings, at the bottom, “Leave diff.me” asks you to type your handle, and then you press the button. diff.me then:
 
-* takes its access away from your GitHub account, and asks GitHub to end the sign-in it holds for you;
-* forgets everything it holds of you, and stops showing you or anything you wrote;
+* takes its access away from your GitHub account, and asks GitHub to revoke the sign-in token it holds for you;
+* forgets what it read from your two spaces and everything it made from that;
 * signs you out of every place you were signed in.
 
-It does not touch your two spaces. Everything in them stays, with everything you wrote, and you can read, copy or delete them on GitHub as you can any of your repositories, as xref:joining.adoc[Joining] says. If the leave did not finish, nothing is lost, and you can try again.
+If the leave did not finish, nothing is lost, and you can try again. When you have left, a page tells you it is done, and that your spaces are still yours.
 
-When you have left, a page tells you it is done, and that your spaces are still yours.
+== What diff.me forgets
+
+diff.me forgets everything it read from your two spaces, and everything it drew from that:
+
+* your posts, replies, reactions, follows, recommendations and profile, from the public one;
+* your messages, drafts, saves, mutes, blocks, approvals, settings, followed topics and votes, from the private one;
+* its own copy of what is in both spaces;
+* the notes it had waiting to tell other people of your private doings: a message, a save, a draft, a mute, a block, a setting, an approval.
+
+diff.me then shows you nowhere. Your profile, your posts and anything you wrote are found by no one, in search, in Explore or in anyone’s Home. A vote you gave in someone’s poll goes with you, and so do the counts it was in.
+
+== What diff.me keeps, and why
+
+diff.me also holds a record of its own, which no repository contains. It is kept, not erased, by design, and leaving does not remove it. The only exceptions are what it noted of the pushes to your private space, the links it made from commits there to GitHub accounts, and the earlier names your spaces had: those go when its access ends. What is kept:
+
+* *You.* Your GitHub account number and login, a yes that you said you were old enough (and never the date), when you joined, and when your GitHub account was made.
+* *Your handle.* Every handle diff.me has issued is kept and never given to anyone else, so no one can take an address that names you. It is also how you come back to it.
+* *The access you gave, and your two spaces.* When you gave the access and when it ended; which two spaces diff.me made for you and which it reached, what each is called, when it was made, and whether GitHub last said it was public or private.
+* *What diff.me noticed of your spaces.* For your public space, each push: which branch moved from which commit to which, and when. For both, when diff.me first saw the commits that decide when something counts (your posts, recommendations and follows, and your messages), which is how it tells when a post was made and whether a key counted at the time; and whether each reading of a space worked. None of this holds your words.
+* *Reports and decisions.* Reports of you or by you, with the reporter’s note and, for a message, its words as they were reported; what the people who read reports decided; a suspension, which goes on applying to your handle; and a hidden post, which stays hidden.
+* *What you had seen.* How far you had read your notifications, and how many messages you had been shown in each conversation you opened, which names the conversation by the addresses of the people in it. This is your own record: it was never written to a repository, and no one was told of it.
+* *Counts.* How many people your posts reached and how many opened them, which name no one.
+* *That you signed out.* The moment your sessions ended, so that none of them opens again.
+
+Two kinds of record last only a short time: a note of each act you made, for a day, and the events that told other people about what you did in public, for thirty days.
 
 == What other people see
 
-diff.me no longer shows your posts, your profile or you. A vote you gave in someone’s poll goes with you, and so do the counts it was in.
-
-What you wrote is still in your public space on GitHub, so anyone who can open it there can still read it, as xref:who-can-find-you.adoc[Who can find you] says.
+diff.me no longer shows your posts, your profile or you. What other people wrote in their own spaces stays in them. What you wrote is still in your public space on GitHub, so anyone who can open it there can still read it, as xref:who-can-find-you.adoc[Who can find you] says.
 
 == Coming back
 
-Sign in with GitHub and join again. diff.me reads what you have written from the start. xref:joining.adoc[Joining] says what you are asked.
+Sign in with GitHub and join again. Your handle is yours still. If your two spaces are still on your GitHub account, give diff.me access to them again, and everything you wrote is back: diff.me reads it from them. If they are gone, diff.me makes two new ones. xref:joining.adoc[Joining] says what you are asked.

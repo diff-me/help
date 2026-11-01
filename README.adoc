@@ -40,6 +40,11 @@ What diff.me does, what it asks of GitHub, and who can see what, in articles gro
 * xref:the-rules.adoc[The rules]
 * xref:reporting-and-what-happens-next.adoc[Reporting, and what happens next]
 
+== For engineers
+
+* xref:your-posts-with-git.adoc[Your posts with git]
+* xref:the-format.adoc[The format, in full]
+
 == Policies
 
 * xref:accessibility.adoc[Accessibility]

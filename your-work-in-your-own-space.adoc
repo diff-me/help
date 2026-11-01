@@ -16,4 +16,4 @@ A post’s ⋯ menu has “View on GitHub”, which opens the post where it is k
 
 == What stays yours
 
-Your spaces belong to your account, not to diff.me. You can read them, copy them or delete them on GitHub as you can any of your repositories, and you can take diff.me’s access away in GitHub’s settings whenever you like. They stay on your account with everything you wrote, and giving diff.me access to them again brings it all back. xref:joining.adoc[Joining] says what diff.me asks of GitHub, and xref:who-can-find-you.adoc[Who can find you] says what each setting shows.
+Your spaces belong to your account, not to diff.me. You can read them, copy them or delete them on GitHub as you can any of your repositories, and you can take diff.me’s access away in GitHub’s settings whenever you like. They stay on your account with everything you wrote, and giving diff.me access to them again brings it all back. xref:joining.adoc[Joining] says what diff.me asks of GitHub, and xref:who-can-find-you.adoc[Who can find you] says what each setting shows. It is all plain git, and xref:your-posts-with-git.adoc[Your posts with git] shows how to read and write your work with it.

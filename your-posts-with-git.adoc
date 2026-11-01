@@ -1,0 +1,198 @@
+= Your posts with git
+
+Everything you do on diff.me is written to two repositories on your GitHub account, and diff.me reads them back. You never need any of this to use diff.me. It is here for anyone who wants to read or write their work with git.
+
+== Your two repositories
+
+[%header,cols="4,3,5"]
+|===
+| Repository | Who can read it | What it holds
+
+| `+<your-login>/.diffme+`
+| anyone
+| your posts, your reactions, the recommendations you give, who you follow, your profile
+
+| `+<your-login>/.diffme-private+`
+| you, and diff.me for you
+| your messages and votes, your drafts and saves, your lists of people you mute, block or approve, your followed topics and settings
+|===
+
+Both are yours: clone them, copy them or delete them as you can any repository of yours. If you make `.diffme` private on GitHub, you are protected, as xref:who-can-find-you.adoc[Who can find you] says.
+
+== Where things are
+
+In `.diffme`:
+
+[%header,cols="3,5"]
+|===
+| Branch or notes | What it holds
+
+| `posts`
+| every post, reply, quote, repost, edit and taking back, oldest first
+
+| `main`
+| your profile: `README.adoc`, which GitHub shows as the repository’s page, and your signing keys, `.diffme/allowed_signers`
+
+| `following`
+| who you follow: one file, a line for each person
+
+| `recommendations`
+| the recommendations you have given
+
+| `refs/notes/reactions`
+| your reactions, as git notes on the posts they answer
+
+| `refs/notes/shown`
+| the recommendations you chose to show on your profile
+|===
+
+In `.diffme-private`, `messages` holds your half of every conversation and your votes, `drafts` your drafts, `refs/notes/saves` your saves, and `main` your lists and settings. Only you can read it, with your own sign-in to GitHub.
+
+== Reading your posts
+
+----
+git clone https://github.com/<your-login>/.diffme
+cd .diffme
+git switch posts
+git log main..posts
+----
+
+Every branch begins at the first commit of `main`, which is your profile’s. `main..posts` leaves it out, so the log is your writing, newest first.
+
+Each commit on `posts` is a post, and its message is the post’s words, in AsciiDoc. A piece starts with its title, as `+= Title+`. The commit changes no file, apart from pictures, which go in `media/`.
+
+What a post answers goes in lines at the end of its message, which git calls trailers. A reply names the post it answers by the address of its repository and its full commit id:
+
+----
+Not yet. I will run it tomorrow and say what I find.
+
+Reply-To: https://github.com/tom-okafor/.diffme@3f2a9c1e7b0d4c5a8e6f1b2d3c4a5e6f7a8b9c0d
+----
+
+The lines are:
+
+[%header,cols="3,5"]
+|===
+| Line | What it says
+
+| `+Reply-To: <address>+`
+| this is a reply to the post at that address
+
+| `+Quotes: <address>+`
+| this is a quote of that post, and the message is the comment
+
+| `+Reposts: <address>+`
+| this passes that post on, and the message is `Repost`
+
+| `+Edits: <commit id>+`
+| this is a new version of the post that began with that commit, and the message is the post’s whole new words
+
+| `+Retracts: <commit id>+`
+| this takes back the post that began with that commit, and the message is the reason, or `Retracted`
+
+| `+CW: <words>+`
+| a content warning
+
+| `+Topics: <topic>, <topic>+`
+| up to five topics
+
+| `+Replies: following+` or `+Replies: mentioned+`
+| who may reply; without the line, everyone may
+
+| `+Co-authored-by: Name <email>+`
+| a person the post was written with
+
+| `+Poll:+` and `+Poll-Choice:+`
+| a poll, on a post that answers no other
+|===
+
+An address is the address of a repository, an at sign and a full commit id.
+
+Your reactions are notes, which git does not fetch unless you ask:
+
+----
+git fetch origin 'refs/notes/*:refs/notes/*'
+git notes --ref=reactions list
+git notes --ref=reactions show <commit id>
+----
+
+The list gives a note and the commit it is on, which is usually in someone else’s repository. `show` prints the reaction: `like`, `insightful`, `agree`, `celebrate` or `love`.
+
+== Writing from your terminal
+
+You can write a post with git, and diff.me reads it as one, when it is signed with a key that you have registered. diff.me hears of your push from GitHub and reads it.
+
+*1. Make a key to sign with.* Any SSH key git can sign with does: Ed25519, ECDSA, RSA or a security key.
+
+----
+ssh-keygen -t ed25519 -C laptop -f ~/.ssh/diffme-signing
+----
+
+*2. Register it.* Add a line to `.diffme/allowed_signers` on `main`, in git’s own format, with these options:
+
+----
+your-login namespaces="git",valid-after="20261101120000Z" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIICkkD2zjmpaguDME5rfxZk/BVzG7j0LbNT8x9YtaSJp laptop
+----
+
+The first word is a label of your choosing, with no spaces, commas or quotation marks. After it come the options, written together with commas between them and no spaces: `namespaces="git"`, then `valid-after="YYYYMMDDHHMMSSZ"`, the time the key starts to count, in UTC, and, if you want one, `valid-before="YYYYMMDDHHMMSSZ"`, the time it stops. Then comes the key as `ssh-keygen` wrote it in the `.pub` file, and a name for it. A line without those options is not a registration.
+
+The first key has to be added through GitHub: open `.diffme/allowed_signers` in your repository on github.com, edit it and commit to `main`. GitHub makes that commit as you and signs it, and only a commit that counts as yours can register a key. A key added by a commit that you made yourself without signing it, or signed with a key that was not registered yet, does not count. Once a key counts, you can add the next from your terminal, in a commit the first one signs.
+
+*3. Tell git about it.*
+
+----
+git config gpg.format ssh
+git config user.signingkey ~/.ssh/diffme-signing.pub
+----
+
+*4. Write.* A post is a commit whose message is its words, so it needs no file:
+
+----
+git switch posts
+git commit --allow-empty -S -m "Shipped the resolver rewrite: 40% fewer allocations."
+git push origin posts
+----
+
+A second `-m` makes the next paragraph, which is where the lines go:
+
+----
+git commit --allow-empty -S -m "Agreed. We saw the same pauses under load." \
+  -m "Reply-To: <the address of the post>"
+----
+
+=== When a key counts
+
+A commit you sign with a key counts as yours when all of these hold:
+
+* The key’s line is in `.diffme/allowed_signers` on `main`, and the commit that added the line counts as yours.
+* The date in the commit, git’s committer date, is in the time the key was in force. That time begins at the later of the line’s `valid-after` and the time of the commit that added the line, so a commit signed before its key was registered never counts, however it is pushed. It ends at `valid-before`, or at the time of the commit that took the line out.
+* diff.me did not first see the commit after the key had ended, whatever date the commit carries.
+
+A key that has ended cannot be brought back: add it again as a new line, with a new `valid-after`.
+
+Anyone with a clone can check your signatures against that file with plain git. Git checks the signature against the lines of the file; the other rules are diff.me’s.
+
+----
+git show origin/main:.diffme/allowed_signers > allowed_signers
+git -c gpg.ssh.allowedSignersFile=allowed_signers log --show-signature
+----
+
+== A commit nobody signed
+
+diff.me reads every commit on `posts`. One that is not signed by GitHub as you, or by a key that counts, is not counted as yours. diff.me shows it on your own page, and to anyone who opens its address. It is in no one else’s list, and no reply, quote, repost, mention, reaction count or notification comes of it.
+
+== Taking a post back, and deleting one
+
+Taking a post back on diff.me adds a commit whose message is your reason, or `Retracted`, and which carries `Retracts:` and the post’s first commit. The post’s history stays, and diff.me shows in its place that you took it back. From a terminal it is a commit of the same kind:
+
+----
+git commit --allow-empty -S -m "Not needed" -m "Retracts: <the post's first commit id>"
+----
+
+Editing is a commit like it, with `Edits:` and the post’s whole new words. Every version stays, and diff.me shows the earlier ones.
+
+You can also delete a post’s commits from `posts`, as git lets you, and push the branch again with `--force`. That rewrites every commit after them, so those posts get new ids. diff.me follows what your repository holds: the post is gone from diff.me, and anything that pointed at it shows it as unavailable. Deleting does not reach anyone who copied your repository before.
+
+== The whole format
+
+Every branch, file and line diff.me reads or writes is in xref:the-format.adoc[The format, in full]. It is published so that anything built on git can read and write what diff.me does, not only diff.me.

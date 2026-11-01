@@ -1,0 +1,992 @@
+= The format, in full
+
+This is the diff.me substrate, version 2. Every post is a git commit in a
+repository its author owns on GitHub. This document says exactly what each
+thing a person does on diff.me is in git, so that diff.me, a person with a
+terminal, or anything built on git can read and write it. It replaces the
+file-per-post format diff.me first built (in git history before D-077), whose
+only repositories were pre-production and are remade. Decisions: D-067 to
+D-071 in DECISIONS.md.
+
+Three rules hold throughout:
+
+* *Words are AsciiDoc in commit messages.* A message is an AsciiDoc document.
+Its subject line is git's subject and, for long-form, the document's title
+(`= Title`). Commit bodies wrapped at 72 columns are AsciiDoc paragraphs.
+* *Relations are plain git trailers* (`Key: value`), exactly as git defines
+them, in the message's final paragraph. AsciiDoc understands them through
+configuration (<<s7,§7>>), never by bending the syntax.
+* *A reference names a commit pinned by its SHA in a repository git can
+fetch:* `+<repository URL>@<full sha>+`, for example
+`+https://github.com/sarah/.diffme@3f2a9c1e7b0d4c5a8e6f1b2d3c4a5e6f7a8b9c0d+`.
+
+People never see any of this. It is the public interface for software and for
+engineers who want it.
+
+[#s1]
+== 1. Repositories
+
+Each person has two, created by diff.me on their GitHub account at signup
+(D-061) and granted to the diff.me App alone:
+
+[%header,cols="4,4,5"]
+|===
+| Repository | Visibility | Holds
+
+| `+<login>/.diffme+`
+| public
+| the person's writing, reactions, recommendations, follows, profile
+
+| `+<login>/.diffme-private+`
+| private, no collaborators
+| messages, drafts, saves, mutes, blocks, settings
+|===
+
+[#s1-1]
+=== 1.1 The format a repository names
+
+A repository names the format it is written in: a version, written once at
+signup, in the file `.diffme/format` on the `main` of each of the two
+repositories. The file holds the version as a decimal number and a line feed;
+this document describes version `2`, so the file reads `2`.
+
+A reader reads the file before anything else of the repository, at the tip of
+`main`, whoever made the commit. A repository with no such file, or no `main`
+yet, is in the current format. A repository that names a version the reader
+does not read (a newer one, an older one it no longer reads, or a name that is
+not a number) is not read at all: its posts, lists and messages are not derived,
+and what was derived of it before is dropped, so that a newer act is never
+misread as an older one. The person is still known by their handle, and diff.me
+tells them, and whoever opens their page, in plain words, that it cannot read
+their repository yet. diff.me writes nothing to a repository it cannot read.
+When the file names a version the reader reads again, the repository is derived
+from the start.
+
+[#s1-2]
+=== 1.2 Names
+
+A repository is the forge's repository, known by the number the forge gives it,
+which a rename of the repository or of the account does not change. The address
+a reference names (`+<repository URL>@<sha>+`, and each line of `following`,
+`mutes`, `blocks`, `approved`, `declined`, `accepted` and `refused`) is the repository's address at the time the reference was
+written. Git is not rewritten when the address changes, so those references
+keep the address they were written with, and a reader resolves them: the
+addresses a repository has had are kept as aliases of it, and every one of them
+names the repository.
+
+* A rename is learnt from the forge, once, by the repository's number: from the
+forge's notices of a rename of the repository or of the account, and when a
+read of the repository by a name it no longer has is answered from another.
+The name it replaces is kept as one the repository has had.
+* Follows, mutes, blocks, approvals, declines, replies, quotes, reposts, recommendations and
+conversations that name an address the repository had are about the same
+person, and a conversation is one conversation across the rename. A list that
+names the person by two addresses lists them once.
+* What diff.me writes after the rename names the address the repository has
+now. What was written stays as written: an address in a reference is never
+rewritten, and a list that spells the person by an old address keeps the line
+until the person takes them off, which removes every line that names them.
+* A name belongs to whoever holds it now. When another repository takes a name
+this one had, the name is theirs, and references to it name them.
+
+[#s2]
+== 2. Refs
+
+[%header,cols="3,4,5"]
+|===
+| Ref | Repository | What its commits or notes are
+
+| `refs/heads/main`
+| public
+| the profile: `README.adoc`, `.asciidoctorconfig`, `.asciidoctor/lib/trailers.js`, `+.diffme/allowed_signers+`, `.diffme/format` (<<s1-1,§1.1>>), and `.diffme/pinned` (<<s2-1,§2.1>>). GitHub shows this branch, so the repository's page is the profile.
+
+| `refs/heads/posts`
+| public
+| the timeline: every post, reply, quote, repost, edit and retraction, oldest first. `git log posts` is a person's writing.
+
+| `refs/heads/recommendations`
+| public
+| recommendations the person gave (<<s5,§5>>)
+
+| `refs/heads/following`
+| public
+| who the person follows: one file, `following` (<<s2-1,§2.1>>)
+
+| `refs/notes/reactions`
+| public
+| the person's reactions (<<s4,§4>>)
+
+| `refs/notes/shown`
+| public
+| the recommendations the person accepted for their profile (<<s5,§5>>)
+
+| `refs/heads/main`
+| private
+| the files `mutes`, `blocks`, `approved`, `declined`, `accepted`, `refused`, `settings` and `topics` (<<s2-1,§2.1>>), and `.diffme/format` (<<s1-1,§1.1>>)
+
+| `refs/heads/messages`
+| private
+| the person's half of every conversation (<<s6,§6>>), and their votes (<<s6-3,§6.3>>)
+
+| `refs/heads/drafts`
+| private
+| drafts (<<s3-6,§3.6>>)
+
+| `refs/notes/saves`
+| private
+| saves, keyed by the post's SHA
+|===
+
+[#s2-1]
+=== 2.1 Lists and settings
+
+`following`, `mutes`, `blocks`, `approved`, `declined`, `accepted` and `refused` each name people: one
+repository URL per line (the person's public repository), no blank lines, no
+repeats. A change is a commit that rewrites the file. A branch without the file
+lists no one. `settings` holds one `+<key> <value>+` per line; diff.me defines
+the keys it reads and ignores others.
+
+`pinned` is a list of the same kind on the public `main`, of work and not of
+people (below).
+
+==== Topics followed
+
+`topics` on the private `main` lists the topics the person follows: one topic key
+per line (<<s3-9,§3.9>>: GitHub's form, lower-case letters, digits and hyphens), in the
+order the person followed them, no blank lines, no repeats, at most one hundred. A
+change is a commit that rewrites the file: following a topic appends its key,
+unfollowing removes the line, and moving one rewrites the order. A branch without
+the file follows no topic. A line that is not a key, a repeat, and a line past the
+hundredth are findings and are left out; the order of the rest is the order of the
+file. The file is private because following a subject is a choice about what a person
+reads and not something they publish (D-095). diff.me reads it to raise the posts
+on those topics in Explore for that person and to draw the topics they follow as the
+chips above it, in this order, and counts, for each topic, how many people follow it,
+a number and never the names.
+
+diff.me reads two keys.
+
+[%header,cols="3,3,4"]
+|===
+| Key | Values | Meaning
+
+| `discoverability`
+| `public`, `not-discoverable`
+| Whether diff.me surfaces the person. Absent, or any other value, is `public`.
+
+| `read-receipts`
+| `on`
+| Whether the person lets people know when they have read their messages (D-099). Absent, or any other value, is off.
+|===
+
+`not-discoverable` is a statement about what diff.me shows and not about the
+repository, which stays public: diff.me does not surface the person in search
+(of people or of posts), Explore, the people a reader may know, suggestions
+while typing an @, the lists of who reacted, who follows and who is followed, or
+the names in another person's notifications (they are counted among the
+others), except to the people they are connected to. Two people are connected
+when each follows the other. Their posts and profile stay reachable by their
+address, and the people who follow them read their posts in Home as before.
+`public` is written by taking the line out, so a person who never chose has the
+file they began with.
+
+`read-receipts on` is a statement about what diff.me may show other people of the
+person's reading, kept in the person's own file and read by diff.me alone. Reading
+is not written to any repository. When the person and another in a conversation both
+have the line, the last message each sent says Seen once the other has read it, and
+with either line absent diff.me shows neither of them anything of the other's
+reading. It is written by putting the line in and, as `public` is, taken out to turn it off.
+
+==== Pinned
+
+`.diffme/pinned` on the public `main` is the work a person puts first on their
+profile: up to six lines, in the order to show them, each one of
+
+* a repository, by its URL as the forge serves it to anyone
+(`+https://github.com/sarah/compiler+`), or
+* a post of the person's own, by its address (`+<repository URL>@<full sha>+`,
+at the top of this document): the repository is their public one and the sha
+is the post's first commit.
+
+There are no blank lines and no repeats; a repository spelled two ways in its
+case is a repeat. A change is a commit that rewrites the file, and a `main`
+without the file pins nothing. It is read at the tip of `main` whoever made the
+commit, as the README is, since it is part of what the person's repository says
+of them. A line that is neither is left out, as is any line after the sixth,
+and both are reported to the operator; a line that names a repository on
+another forge, or a post that is not in the person's own repository, shows
+nothing, and stays until the person takes it off.
+
+diff.me shows a pinned repository with what the forge says of it to anyone: its
+name, its description, the language most of it is written in, how many accounts
+starred it, and when it last received a push. It reads these with the person's
+own installation, never with the App's own access, keeps them in the index with
+the list, and reads them again when the list changes and when the person's
+repository is read again, each day, and never when a page is viewed. A
+repository the forge does not serve to anyone (deleted, made private, or not
+there) is not shown. Under each pinned repository diff.me lists the person's
+three newest posts that link to it: posts and quotes, not replies or reposts,
+that count and are not retracted, whose newest version's words hold the
+repository's URL or the URL of a page under it (`+.../compiler/pull/9+`).
+
+A change through diff.me is refused when the list holds more than six, names a
+repository twice, names a repository the forge does not serve to anyone or
+cannot find, or names a post that is not the person's own or is not there.
+
+==== Protected
+
+A person is protected while the forge reports their public repository private.
+The person makes it private in the forge's settings (diff.me cannot, and
+writes no setting for it); the repository is still read through the grant,
+whatever its visibility. Protection is not a key of `settings`: making the
+repository public again on the forge makes the person public (or not
+discoverable, if `discoverability` says so), and no file is rewritten for either.
+
+A protected person is followed by request. A person asks by writing the
+protected person's repository URL in their own `following`, as for any follow;
+the protected person decides in the private repository:
+
+[%header,cols="2,5"]
+|===
+| File | Holds
+
+| `approved`
+| the people whose request the person approved: they are followers
+
+| `declined`
+| the people whose request the person declined
+|===
+
+For a protected person, someone who follows them is one of three:
+
+* A follower: they are on `approved` (when a person is on both files,
+`approved` governs), or diff.me saw their follow before it first saw the
+repository private, since it was last made private after being public, and
+they are not on `declined`. Whoever followed before the person became
+protected stays a follower until the person removes them. A follow is
+judged by when diff.me first saw the commit that wrote it, never by a date the
+commit claims.
+* Declined: they are on `declined` and not on `approved`, whenever they followed.
+The protected person is not shown the request again; whoever asked still reads
+"Requested", and may take the request back by taking the person off
+`following`. Asking again changes nothing until the person approves. A person
+declined who followed before the person became protected is a follower
+removed: the person removes a follower as they decline a request.
+* Requesting: they follow, and are neither. The protected person is told, and
+the request waits.
+
+Approving puts the person on `approved` and takes them off `declined`;
+declining takes them off `approved` and puts them on `declined`, which removes
+a follower as it declines a request. A person who had asked before the person
+became protected is a follower already, and approving them changes nothing a
+reader sees. An approval is kept when the
+follower takes their follow back and applies when they follow again; it ends
+when the protected person takes the line off `approved`.
+
+What diff.me shows of a protected person to someone who is not a follower, and
+is not them, is their name, their picture and their counts, and that they are
+protected. Everything else the person writes or does is shown to themselves and
+their followers alone (their circle), on every page and every live update: their
+posts, replies, quotes and reposts (a reply of theirs under another's post is
+not among the replies to people outside the circle); their reactions, which are
+counted and not named, as for a person who is not discoverable; their follows,
+their followers and the people they follow; the recommendations they gave and
+were shown; and search of people and of posts, suggestions while typing an @ and
+the lists of who reacted, who follows and who is followed. Explore and the
+people a reader may know are of the public, and do not list them to anyone. A
+mention of someone outside the circle makes no notification. A reply, quote or
+repost of a protected person's post lives in the public repository of whoever
+wrote it, and to a reader outside the circle names a post that cannot be shown,
+never its words. The person's repository URL is in the follows of the people who ask:
+git is diff.me's public interface, and protection is of what diff.me shows.
+
+==== Message requests
+
+A conversation is from the person who started it: the sender of its oldest
+message the reader sees. It is in the reader's inbox when the reader started it
+or has written in it, when its starter is someone the reader follows, or when
+its starter is on `accepted`; otherwise it is a request, which diff.me lists
+apart from the inbox and tells the reader of by a count and no more. A group
+conversation is from people the reader follows when its starter is.
+
+[%header,cols="2,5"]
+|===
+| File | Holds
+
+| `accepted`
+| the people whose message requests the person accepted: their conversations are in the inbox, and stay there
+
+| `refused`
+| the people whose message requests the person declined
+|===
+
+A person on `refused` and not on `accepted` (when a person is on both files,
+`accepted` governs), whom the reader does not follow, has no conversation
+listed, in the inbox or among the requests, and none of their messages shown or counted;
+what they write stays in their repository. Accepting puts the person on
+`accepted` and takes them off `refused`; declining takes them off `accepted`
+and puts them on `refused`. Following the person, or writing to them, makes the
+conversation the inbox's whatever the files say. Blocking is the `blocks` file,
+as for any message (<<s6,§6>>).
+
+[#s2-2]
+=== 2.2 The profile
+
+The profile is `README.adoc` on the public `main`, an AsciiDoc document. GitHub
+shows it as the repository's page, so it reads well there and in any AsciiDoc
+reader. The picture is the GitHub account's avatar, which diff.me serves
+through its own proxy so readers never contact GitHub. diff.me indexes the
+profile like everything else it shows.
+
+diff.me reads these parts of the document, and no others:
+
+[%header,cols="2,5"]
+|===
+| Part | Where it is
+
+| name
+| the document title, `= Name`, when it is the first line
+
+| headline
+| the attribute `:headline:` of the document header
+
+| location
+| `:location:`
+
+| links
+| `:link-1:` to `:link-5:`
+
+| open to
+| `:open-to:`
+
+| page
+| the rest of the document
+|===
+
+A part the document does not have is absent: a person who says nothing of a
+part has no attribute and no section for it. When the first line is not a title
+the handle is the person's name.
+
+*An example*, as GitHub shows it (the header's attributes are not drawn):
+
+----
+= Sarah Chen
+:headline: Staff engineer, compilers and runtimes
+:location: Berlin, Germany
+:link-1: https://sarah.example
+:link-2: https://github.com/sarah
+:open-to: Staff and principal roles, remote
+
+I build compilers, and write about how they go wrong.
+
+[.piece]
+https://diff.me/sarah/3f2a9c1e7b0d[Why our GC pauses hid in p99]
+
+[.recommendations]
+The recommendations I show on diff.me appear here.
+
+[.latest]
+My latest posts on diff.me appear here.
+
+[.experience]
+== Experience
+
+Staff engineer at Acme, 2021 to now. Led the compiler team.
+----
+
+*A project* is any work a person makes (D-096), not only code, and is an open
+block with the role `project`: a bold line that is its title, then, each in a
+paragraph of its own and in any order, a line in emphasis that says when (free
+words, "Spring 2026"), its words, a link (`+https://github.com/owner/name[owner/name]+`)
+and pictures (`+image::media/0123456789ab.jpg[a description]+`). Only the title is
+needed.
+
+----
+[.project]
+--
+*A desk made from a fallen oak*
+
+_Autumn 2025_
+
+The oak came down in the storm of 2024. I cut it into boards.
+
+image::media/0123456789ab.jpg[The finished desk, from the side]
+--
+----
+
+The pictures of a project are files of the public `main`, stored as a post's are
+(<<s3-7,section 3.7>>): the page is written with a name of the picture, and the stored
+file is `media/` and the first twelve hex digits of its content, a dot and the
+extension, in the same commit as the README. diff.me serves them from the tree
+of the tip of `main`, a file of `media/` only. A page that is written again
+keeps the files it still names, and a file it no longer names is left in the
+tree. The repositories that the links of the first twelve projects name (one that
+names a repository of the forge, once) are read like a pinned project (<<s2-1,section 2.1>>): what the forge says of each, and the person's posts that link it, in the
+index.
+
+*The document header* is the title line, when the first non-blank line is
+one, and the attribute entries (`:name: value`) and comment lines that follow it
+without a blank line. A document with no title has a header when its first line
+that is not a comment is an attribute entry. A value that ends in a space and a backslash (`+\+`) goes on
+to the next line. An attribute diff.me does not read is the person's own and
+stays; an attribute given twice is the last one (AsciiDoc's rule), and `:name!:`
+takes it away. A line that follows the header without a blank line is the
+about text's.
+
+*Name.* The title is a name when it is one line of at most 80 characters of
+text. One that is not is still the title: it names no one and is not about text.
+
+*Headline, location, open to.* One line of text each: the headline at most
+160 characters, the location 80, what the person is open to 160 ("Staff roles
+in infrastructure, remote"). A part that breaks its limit is absent.
+
+*Links.* Up to five, each an `http` or `https` address of at most 300
+characters, with no space and no user name or password, in the order of their
+numbers; a number that is missing is skipped.
+
+*Where a profile begins, and where the place and links go (D-096).* A person's
+name and their one line start from their GitHub profile: when they join, the first
+README holds their GitHub display name as the title and their bio as the headline,
+each made one line and cut to its limit (80 and 160 characters), read with the
+person's own token; a part GitHub has none of, or has in a form a README cannot
+hold, is left out, and a GitHub that does not answer begins the plain README. They
+can ask for it again (`LibraryService.GetGitHubProfile`), which writes nothing: the
+edit of the name and line fills its fields, and the person saves. The location and
+the links are no longer asked for. A README that holds them keeps them, byte for
+byte, and diff.me shows them as words after the page: the place as a line of its
+own, then the links as a list. When the person next writes the page they come into
+it as those words, and updating the page takes the two out of the header, so what
+the person keeps or lets go of is theirs to say and nothing they wrote is lost
+before then.
+
+*The page* is the lines of the document after its header, without the blank
+lines at its ends: the person's words, in AsciiDoc, with sections of their own
+(any `==` heading and what follows it). Lines are read as one line feed each,
+however the file ends them. The page is what a person writes with the composer on
+their profile (D-097), and the blocks of their work in it are ordinary AsciiDoc
+carrying a role, which diff.me draws and GitHub shows as the words they are:
+
+[%header,cols="3,5,5"]
+|===
+| Role | Where it stands | diff.me draws
+
+| `+[.piece]+`
+| a paragraph whose first link is the address of a post of diff.me, `+https://<host>/<handle>/<12 or more hex digits>+`; the link's words are the piece's title
+| the piece's card (its title, how it opens, how long it takes to read); a link to a post that is not a long piece, is gone or is not there stays the link
+
+| `+[.recommendations]+`
+| a paragraph whose words say what it holds
+| the recommendations the person shows, in its place
+
+| `+[.latest]+`
+| a paragraph, likewise
+| their newest posts, at most three
+
+| `+[.experience]+`, `+[.education]+`
+| a section (`== Experience`, `== Education`) in the person's own words
+| the section, for display only
+|===
+
+A block in a form that is none of these is the person's own words. Only the first
+of the recommendations and of the latest posts is drawn, and no more than six
+pieces; the others stay the words they are. A reader that knows no role, GitHub
+among them, shows the words, so the placeholders say in plain words what diff.me
+fills in. A person who has not placed the recommendations on their page has them as a
+section of their own under it.
+
+A README that is not UTF-8 text has no parts, and one larger than 64 KiB is no
+profile. A part that breaks its limits is left out, and reported to the
+operator; reading never fails on what a person wrote.
+
+*Writing.* diff.me changes a profile one part at a time: a part an edit does
+not name stays as it is, and a part it names empty is taken out. Everything else
+is written back byte for byte, line ends and spacing included, and only the
+lines of the part that changes are touched.
+
+* A new line ends as the file's first line does.
+* A name is the title line; a new one is the first line, parted from the words
+by a blank line, and taking it out takes the header's comments with it when
+nothing else of the header is left.
+* An attribute is a line in the header, replaced where it stands, or, when new,
+put after the nearest attribute of diff.me's in the order of the table (else
+before the nearest after it, else at the end of the header; a document with no
+header is given one, parted by a blank line). Taking out an attribute takes
+out every line that gives it. The links are `:link-1:` on, in order.
+* The page is changed line by line against the lines there are: a line the new
+words share with the old stays as it was. New lines go after the old line that
+comes before them, or, at the start, after the header's blank line. A list that
+follows a sentence is parted from it by a blank line, as AsciiDoc needs.
+
+An edit is made only if the file it makes reads back as it was asked, in every
+part: a page that opens a title or an attribute at the top of a file that has no
+header, is refused, as is a value that
+does not fit its limits, a README that is not text, and one the edit would make
+larger than 64 KiB.
+
+*What GitHub already proves.* The profile carries no badge, no tier and no
+colour. It states two facts that GitHub vouches for, in plain words. _On GitHub
+since_ a year is the year the person's account was made, which the forge states
+of any account to anyone: diff.me reads it once, with the person's own
+installation, and keeps it with the account. _Their posts are signed by GitHub_
+is said of a person who has at least one post that counts and whose every post
+that counts was written in commits that GitHub signed with the person's account
+as their author (the first way a commit counts, <<s8,§8>>), none counting by a key the
+person registered (the second). A post taken back is no longer one of their
+posts. A person who has posted nothing, or who also signs from a terminal, is
+not said to have it.
+
+*How the refs begin.* At signup diff.me writes each repository's first commit on
+`main` (the profile files and the format in the public one; `mutes`, `blocks`, `settings` and the format
+in the private one; `approved`, `declined`, `accepted` and `refused` in the private one and `.diffme/pinned` in the public one begin absent, which lists no one), then creates every other branch at that commit. A reader
+of a branch skips the commits that the history of `main` holds, so the profile is never
+read as a post. Notes refs begin with their first note.
+
+*What a note holds.* A reaction note holds one reaction name (<<s4,§4>>); a shown
+note holds `shown` or `dismissed` (<<s5,§5>>); a save note holds `saved`. Each ends in a line
+feed; its time is that of the notes commit that put it in place. A repository written
+before marks and reads were removed may still hold `refs/notes/marks` and
+`refs/notes/reads`; a reader does not read them.
+
+Branches carry commits GitHub can sign (`createCommitOnBranch` works on any
+branch). Notes are pushed with git; they never change the commit they
+annotate, can annotate a commit the repository does not hold, and are fetched
+only when asked for (tested 2026-10-10).
+
+[#s3]
+== 3. Posts
+
+[#s3-1]
+=== 3.1 A post
+
+A commit on `posts` whose message is the post. The commit's tree is its
+parent's, plus any media the post adds under `media/` (<<s3-7,§3.7>>); the words are
+never in the tree. The post's identity is this commit's SHA.
+
+----
+Shipped the resolver rewrite: 40% fewer allocations.
+----
+
+A long-form post opens with a title:
+
+----
+= Why our GC pauses hid in p99
+
+We spent a week blaming the network.
+
+image::media/9f2c1a7d0b3e.svg[The pause, as a flame graph]
+----
+
+The kind is in the message: a level-0 title (a first line that begins with `=` and a space) makes it
+long-form; otherwise it is short-form. Nothing else distinguishes them.
+
+[#s3-2]
+=== 3.2 Reply, quote, repost
+
+[%header,cols="1,2,3"]
+|===
+| Act | Message | Trailer
+
+| reply
+| the reply
+| `+Reply-To: <address>+`
+
+| quote
+| the comment
+| `+Quotes: <address>+`
+
+| repost
+| `Repost`
+| `+Reposts: <address>+`
+|===
+
+A reply is written as a post is: it may carry a content warning (<<s3-5,§3.5>>), pictures
+(<<s3-7,§3.7>>) and co-authors in the same commit as its words. A quote is written so too,
+and its writer chooses who may reply to it (<<s3-8,§3.8>>). A reply makes no such choice of its
+own: who may reply is a choice of the post at the head of a conversation.
+
+A message may carry `+Co-authored-by: Name <email>+` for each co-author, as git
+and GitHub already read it. For each person a writer names as a co-author, diff.me
+writes the name and the address that person's own commits carry (the name on
+their profile, and the GitHub noreply address of their account), so GitHub
+shows them too; a post shows its co-authors by name, linked when the address is
+a diff.me account's.
+
+A repost passes another post on and is not itself something to answer. An
+address that names a repost (a reply, quote or repost of it, or a note keyed
+by its commit) is read as naming the post the repost passes on; diff.me writes
+such acts on the original. Whether that post is shown is its own, as for any
+post. One hop: diff.me never writes a repost of a repost.
+
+[#s3-3]
+=== 3.3 Editing
+
+A new commit on `posts` carrying the post's *full* new text and
+`+Edits: <first sha>+`, the SHA of the post's first commit. Nothing is
+rewritten; every version stays in the log, and the post keeps its identity. A post
+that asks a poll is not edited (<<s3-10,§3.10>>).
+
+[#s3-4]
+=== 3.4 Retracting
+
+A commit on `posts` with `+Retracts: <first sha>+`; its message is the person's
+reason, or `Retracted`. diff.me then shows the post as retracted in place.
+
+[#s3-5]
+=== 3.5 Content warnings
+
+`+CW: <words>+` on the post's commit, or on an edit: diff.me shows the words
+and keeps the post folded until opened.
+
+[#s3-6]
+=== 3.6 Drafts
+
+A commit on the private `drafts` branch with the draft as its message, and
+`+Draft-Of: <first sha>+` when it is an edit of a published post in progress.
+The draft's identity is its first commit. A new version of the draft is a
+commit with the full words and `+Draft-Replaces: <draft id>+`; discarding it is
+a commit `Discarded` with `+Draft-Discards: <draft id>+`. Publishing a draft
+writes the post to `posts` and then discards the draft. The drafts a person
+has are those not discarded, each at its newest version.
+
+A draft's message is the post as it will be written: its words, then the
+trailers the post will carry, in the order a post's are written. A draft of a
+reply has `Reply-To`, a draft of a quote `Quotes`, and any draft may have `CW`,
+`Co-authored-by`, `Replies` and `Topics` (<<s3-2,§3.2>>, <<s3-5,§3.5>>, <<s3-8,§3.8>>, <<s3-9,§3.9>>), each read as
+it is on a post. They are the draft's own lines, so each version states them
+again; a version that states none has none. A draft that carries both
+`Reply-To` and `Quotes` is a bad draft and is read as a draft of a post with
+neither. Publishing a draft writes the post's commit with exactly the words and
+lines the person then sends, which are the draft's when it was opened and left
+as it was; the draft's own lines decide nothing the person did not send.
+The `+Draft-*+` trailers are the draft's own and never reach the post.
+
+The draft of a new post may ask a poll as the post will: the `Poll` and
+`Poll-Choice` lines of <<s3-10,§3.10>>, read together or not at all. A draft of a reply, a
+quote or a change to a post has none, and one that carries the lines is read with
+no poll.
+
+A draft has pictures as a post does (<<s3-7,§3.7>>): the commit of a version adds the
+files the words name under `media/` in the `drafts` tree, and the words name
+them by path. The pictures of a draft are the files its newest version's words
+name that its commit's tree holds. A version whose words no longer name a
+picture no longer has it: saving a draft again keeps, adds or drops pictures by
+what the words then name. A picture is never taken out of the tree (as for
+posts, nothing is rewritten), so a draft discarded leaves no picture in any
+list, and publishing a draft writes the post's commit with the files its words
+name that the draft's newest version holds, in addition to any the post adds.
+
+[#s3-7]
+=== 3.7 Media
+
+Files under `media/` in the `posts` tree (and, for a draft's pictures, in the
+`drafts` tree, <<s3-6,§3.6>>), named by the first twelve hex digits
+of their content's SHA-256 and their extension, so two posts never collide.
+The message refers to them by path (`+image::media/9f2c1a7d0b3e.svg[...]+`),
+resolved against the commit of the post or draft whose words they are.
+
+[#s3-8]
+=== 3.8 Who may reply
+
+`+Replies: <who>+` on a post's *first* commit says whose replies diff.me lists
+under the post:
+
+[%header,cols="2,5"]
+|===
+| Value | Replies listed under the post
+
+| `everyone`
+| anyone's. It is the choice of a post with no `Replies` trailer, and diff.me writes none for it.
+
+| `following`
+| the author's own, and those of the people the author follows (their `following` list)
+
+| `mentioned`
+| the author's own, and those of the people the post's current words mention
+|===
+
+A post's choice is its first commit's; an edit's `Replies` trailer is ignored,
+so an edit cannot widen or narrow who the post's replies were meant for. A value
+that is not one of the three is a bad trailer and reads as `everyone`.
+
+Git cannot stop a commit, so this is a statement about what diff.me shows. A
+reply from someone the choice does not allow is still a commit in their own
+repository, and stays there; diff.me lists it under no post, counts it in no
+post's replies, tells the post's author nothing of it, and shows it on the
+replier's own profile alone, as a reply to a post they could not reply to. A
+person who follows the author after replying is allowed from then on, and
+diff.me lists the reply then: who is allowed is read when the replies are
+listed, not when they were written. The author of a post may always reply to it.
+
+[#s3-9]
+=== 3.9 Topics
+
+`+Topics: <topic>, <topic>, ...+` on any post's commit (a post, a long piece, a reply, a
+quote) lists up to five topics, a comma between them, in the words their writer used
+("garbage collection", "DNS"). A topic is a few plain words: at most 48 characters, none
+of a comma, brace, backslash or control character, and something in it that GitHub's
+form keeps. The key that matches topics is that form, the one a repository's topic has:
+the words in lower case, a hyphen for each run of spaces or hyphens between them, only
+the letters `a` to `z` and the digits, beginning with either, at most fifty characters.
+"Garbage  Collection" and "garbage-collection" are the one topic, `garbage-collection`.
+A topic given twice (by key) is listed once; the first five are the post's topics; words
+that are no topic are left out, and a trailer with none left is a bad trailer.
+
+An edit carries the topics of its version as it carries the content warning (<<s3-5,3.5>>): one
+that carries none removes them. The header attribute `:keywords:` that a long piece's
+words once carried (D-088) is no longer read, and diff.me does not write it: a line that
+holds it is words like any other.
+
+A reader of the repository may treat topics as it likes. diff.me's index keeps each
+post's topics as written and by key, and gives each key a page that lists the posts that
+list it, newest first.
+
+[#s3-10]
+=== 3.10 Polls
+
+A post that relates to no other (<<s3-2,§3.2>>) may ask a poll. The post's words are the question,
+and may not be empty; the poll is part of the post's *first* commit, in trailers after
+the words:
+
+----
+Which resolver do you reach for first?
+
+Poll: 1 week
+Poll-Choice: Unbound
+Poll-Choice: dnsmasq
+Poll-Choice: CoreDNS
+----
+
+`+Poll: <length>+` is how long the poll lasts: one of `1 day`, `3 days`, `1 week` and
+`2 weeks`, spelled so, in lower case. Each `+Poll-Choice: <choice>+` is one choice, in the
+order the lines are written; there are two to four. A choice is a few plain words: at most
+30 characters, with no control character, one space between its words, and no two choices
+alike when compared without regard to case or spacing ("Yes" and "yes" are the one
+choice). A long-form post may ask a poll as a short one does.
+
+The lines make a poll together. A length that is none of the four, fewer than two or more
+than four choices, a choice that is empty, too long or repeated, and lines of one kind
+without the other, leave the post with no poll, read as the question alone and reported. A
+reply, a quote and a repost have no poll, and neither has an edit, whatever lines it
+carries.
+
+A poll ends its length after the post's time: the time diff.me lists the post at, which is
+the commit's own time, or the moment diff.me first saw the commit if that came earlier
+(spec/index/README.md). Readers vote while it lasts (<<s6-3,§6.3>>). A poll stays as it was posted:
+its question, its choices and its length are the first commit's, so diff.me reads no edit
+of a post that asks a poll, and an edit commit that names one is reported and changes
+nothing. The post is taken back as any post is (<<s3-4,§3.4>>).
+
+[#s4]
+== 4. Reactions
+
+A note on the reacted-to post's commit, in the reactor's
+`refs/notes/reactions`. The note's content is one reaction name and a line
+feed: `like`, `insightful`, `agree`, `celebrate` or `love`. One reaction per
+post per person; changing it rewrites the note, and removing it removes the
+note.
+
+[#s4-1]
+=== 4.1 Hidden replies
+
+The author of a post hides a reply to it with a note on the reply's commit (its
+first commit, or any version of it), in the *author's* public
+`refs/notes/hidden`. The note's content is `hidden` and a line feed; showing the
+reply again removes the note. The note is public, as the reply is, and the
+replier is told nothing.
+
+A note hides a reply only in the repository of the person the reply answers: a
+note in anyone else's `refs/notes/hidden` hides nothing, and a note on a commit
+that is not a reply to one of the note-writer's posts hides nothing. diff.me does
+not list a hidden reply under the post nor count it in the post's replies; it
+lists the hidden replies of a post apart, for anyone who asks to see them, and
+the post's author can show any of them again. The reply stays in the replier's
+repository and on their profile.
+
+[#s5]
+== 5. Recommendations
+
+A commit on the giver's `recommendations` branch. Its message is the
+recommendation (AsciiDoc); its trailers:
+
+----
+Sarah wrote the resolver that everyone else was afraid to touch, and then
+she taught the rest of us how it worked.
+
+Recommends: https://github.com/sarah/.diffme
+----
+
+A recommendation is a testimonial (D-096): someone's own words about a person, and
+who wrote them. The message is those words and the `Recommends:` line, and nothing
+else; diff.me adds, edits and summarises nothing of it. There is no relationship
+field. A recommendation written before that carries a `Context:` line (the writer's
+words on how they knew the person) is still read: its context is the writer's own
+words, and a reader shows it after the body with no label, as part of what they
+wrote. Nothing a writer wrote is dropped. diff.me writes no `Context:` line.
+
+Withdrawing is a commit on the same branch with `+Withdraws: <sha>+`.
+
+A recommendation shows on the recipient's profile only once the recipient
+accepts it: a note on the recommendation's commit in the *recipient's*
+`refs/notes/shown`, content `shown`; `dismissed` records that they declined
+it, and with no note it is waiting. Changing the note changes the decision. Each
+person decides, in their own repository, what their profile shows.
+
+[#s6]
+== 6. Messages
+
+A commit on the sender's private `messages` branch whose message is the
+message, with `+To: <recipient's repository URL>+`; a message in a group
+carries one `To:` per recipient. Each person keeps their own half; diff.me
+shows both halves as one conversation (R14). A commit that gives or takes back a
+vote (<<s6-3,§6.3>>) is no message.
+
+[#s6-1]
+=== 6.1 Pictures
+
+A message may carry pictures, up to eight. They are files under `media/` in
+the tree of the message's commit on the sender's private `messages` branch,
+named as a post's media are (<<s3-7,§3.7>>), and the message's words name them as a
+post's do, each in an image macro on a line of its own, in a paragraph of its own, with its
+description (the first paragraph of a message is folded into the commit's headline, so
+pictures on lines side by side would be lost in it; diff.me sets them apart when it
+writes the message):
+
+----
+Here is the flame graph.
+
+image::media/9f2c1a7d0b3e.png[The pause, as a flame graph]
+----
+
+A message may be pictures alone. A picture described as decoration has an empty
+description. The files are resolved against the commit of the message whose
+words name them, and are as private as the message: diff.me serves a picture
+only to the people the message shows to, the sender and each person it names in
+`To:`, and to no one else. The commit adds the files to its parent's tree, so a
+later message carries them in its tree without adding them.
+
+[#s6-2]
+=== 6.2 Reactions to a message
+
+A person reacts to a message, whoever sent it, with one of the five reactions a post takes
+(<<s4,§4>>), by a note on the message's commit in their own private repository's
+`refs/notes/message-reactions`: the note's content is the reaction's name and a line feed, as
+a post's reaction note is. The note is kept where the reactor keeps their half of the
+conversation, and names the message by its commit, which is in the sender's repository (a
+reaction to a post names a commit in another repository the same way). One note on a message
+is one reaction by that person: reacting again with another reaction replaces the note, and
+taking the reaction back removes it. A note whose content is not exactly one reaction name is a
+finding and counts for nothing.
+
+Only the people in a message's conversation (its sender and each person it names in `To:`)
+react to it or see its reactions. A note by anyone else, or on a commit that is no message
+of a conversation the reactor is in, is kept in their repository and shown to no one.
+diff.me reads the reactions of the people it can see in the conversation: a person whose
+reaction is shown is one the reader has not blocked. Unlike a post's reactions, a message's are
+never public: the repository that holds them is private.
+
+[#s6-3]
+=== 6.3 Votes
+
+A person votes in a poll (<<s3-10,§3.10>>) with a commit on their own private `messages` branch,
+addressed to the author of the post as a message is:
+
+----
+Voted
+
+To: https://github.com/sarah/.diffme
+Votes: https://github.com/sarah/.diffme@3f2a9c1e7b0d4c5a8e6f1b2d3c4a5e6f7a8b9c0d
+Choice: 2
+----
+
+`Votes` names the post by its first commit (an address, <<s2,§2>>), `To` the repository of the
+post's author and no other, and `Choice` the choice, counted from 1 in the order the post
+lists them (`Choice: 2` is the second `Poll-Choice`). The words mean nothing. A commit with
+a `Votes` line is a vote and no message: it is in no conversation. One that names no valid
+post, gives no valid choice or is not addressed to the author of the post it names alone
+is no vote, and is reported.
+
+Undoing a vote is a commit on the same branch with `+Withdraws: <the vote's commit>+`, as a
+recommendation is withdrawn (<<s5,§5>>); its words are `Vote withdrawn`. A person has one standing
+vote in a poll. The branch is read in order, and a vote stands from its commit until a
+withdrawal of it; to change it, a person withdraws it and votes again. A vote counts for
+nothing when another of the person's stands in the poll as it is made (it does not come to
+stand if that one is withdrawn later), when the choice is one the poll does not have, when it
+is in the person's own poll, when it is no commit that counts as theirs (<<s8,§8>>), or when diff.me
+first saw its commit at or after the moment the poll ended: a commit's own date decides none
+of this, as it does not for a follow (<<s2-1,§2.1>>). A withdrawal that names no vote of the branch,
+or one already withdrawn, changes nothing.
+
+A vote is as private as a message: the repository that holds it is private. diff.me tells
+the author of the post, and no one else, who voted for what; everyone else is told only the
+poll's totals, and only once they have voted in it or it has ended.
+
+[#s7]
+== 7. AsciiDoc configuration
+
+At signup diff.me writes, on the public `main`:
+
+* `.asciidoctorconfig`: the attributes every renderer of the person's
+writing applies;
+* `.asciidoctor/lib/trailers.js`: an Asciidoctor extension that reads a
+message's trailer block as part of the document (a reply's context, a
+quote's link, a content warning's fold).
+
+diff.me renders with Asciidoctor in its SECURE mode: nothing a post says can
+make the server read a file or a URL. Git's own facts reach the document as
+attributes: `+{author}+`, `+{revdate}+`, `+{revnumber}+` (the version's number).
+
+[#s8]
+== 8. Signing and attribution
+
+* A commit diff.me writes for a person goes through GitHub's
+`createCommitOnBranch` with the person's own token and a `fileChanges`
+object that is always present, empty when no file changes (U7). GitHub
+makes the person the author and signs as committer (R15).
+* A person may write from a terminal with their own key. Keys they register
+are listed in `+.diffme/allowed_signers+` on the public `main`, in git's
+format, so a clone verifies their signatures with plain git (R16).
+* A commit counts as the person's when GitHub signed it with the person's
+account as author, or when a registered key signed it (D-042, D-063, D-064).
+Unsigned commits are shown but count for nothing.
+* Notes are written by git push with the person's token and count by the
+repository they live in: only the person, through diff.me, writes there.
+
+[#s9]
+== 9. Deleting
+
+A person can do anything git allows with their own repositories. Deleting a
+post removes its commits from the `posts` branch, as git does, which rewrites
+every commit after them: those posts get new SHAs. diff.me follows whatever a
+repository holds; a reference to a commit that is no longer there shows its
+target as unavailable. Retracting (<<s3-4,§3.4>>) is the other way to take a post
+back, keeping its history.
+
+[#s10]
+== 10. Handles
+
+[source,abnf]
+----
+handle        = hchar *( [ "-" ] hchar )      ; 1 to 39 characters in all
+hchar         = %x61-7A / DIGIT               ; a-z, 0-9
+----
+
+A handle is 1 to 39 characters of `+[a-z0-9-]+`, with no leading, trailing or
+doubled hyphen (D-034). A handle MUST NOT be a Windows device name: `con`,
+`prn`, `aux`, `nul`, `com1` to `com9`, or `lpt1` to `lpt9` (D-044).
+
+Handles outside this grammar are never issued, and neither are the route
+words a host reserves beyond the grammar. diff.me's route words are:
+`about act all api app arrivals assets auth avatar avatars compose console
+diff-me docs explore feed files healthz help inbox legal login logout new
+rules search settings sign-in sign-out signin signout signup static status
+support switch threads you www admin root system staff moderation messages
+notifications saved write topics`. Every top-level path diff.me's web answers that
+this grammar admits is among them, so no handle's profile is shadowed by a
+page (D-058). `diff-me` is diff.me's own profile (D-036). A second host keeps
+its own list. The list governs issuance, not reading: an address or reference
+that names a route word, on any host, names that handle.
+
+A handle equal to a forge login is reserved to that forge account; a changed
+handle is retired, never reissued, and its addresses redirect permanently to
+the new handle. These are platform records (D-005); the substrate fixes only
+the grammar and the device names.
