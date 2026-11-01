@@ -1,0 +1,25 @@
+= Leaving diff.me, and coming back
+
+You can leave diff.me whenever you like, and nothing you wrote is deleted by it. Your two spaces on GitHub stay yours.
+
+== Leaving
+
+In Settings, at the bottom, “Leave diff.me” asks you to type your handle, and then you press the button. diff.me then:
+
+* takes its access away from your GitHub account, and asks GitHub to end the sign-in it holds for you;
+* forgets everything it holds of you, and stops showing you or anything you wrote;
+* signs you out of every place you were signed in.
+
+It does not touch your two spaces. Everything in them stays, with everything you wrote, and you can read, copy or delete them on GitHub as you can any of your repositories, as xref:joining.adoc[Joining] says. If the leave did not finish, nothing is lost, and you can try again.
+
+When you have left, a page tells you it is done, and that your spaces are still yours.
+
+== What other people see
+
+diff.me no longer shows your posts, your profile or you. A vote you gave in someone’s poll goes with you, and so do the counts it was in.
+
+What you wrote is still in your public space on GitHub, so anyone who can open it there can still read it, as xref:who-can-find-you.adoc[Who can find you] says.
+
+== Coming back
+
+Sign in with GitHub and join again. diff.me reads what you have written from the start. xref:joining.adoc[Joining] says what you are asked.

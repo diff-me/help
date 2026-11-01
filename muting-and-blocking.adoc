@@ -1,0 +1,31 @@
+= Muting and blocking
+
+Muting and blocking are for you alone. They change what you read and who can write to you, and diff.me tells the other person nothing. Both are kept in your private space on GitHub, and you can undo either whenever you like.
+
+== Muting
+
+Open a person’s profile and choose ⋯, or open the ⋯ of one of their posts, and choose “Mute”. Their posts stay out of what you read, and they are not told.
+
+Their posts, replies, reactions, follows and recommendations are left out of Home, Explore, search, your notifications and the number beside them, what you saved, the recommendations waiting for you and those on a profile, and what arrives while a page is open. A post that answers, quotes or passes on one of theirs is drawn without it.
+
+== Blocking
+
+Open a person’s profile, choose ⋯ and choose “Block”. A block does everything a mute does, and more:
+
+* Their page shows who they are and nothing they wrote, and their posts are not found at their own address.
+* They cannot write to you. A message from them could not be delivered, and nothing of theirs is shown, including the messages they wrote while the block stood, even after you unblock them.
+* They cannot vote in your polls.
+
+You can also block from a message request, and diff.me offers Mute and Block when you have sent a report.
+
+== What the other person learns
+
+A mute or a block acts for you alone, and diff.me sends them no notice of either. A person you blocked can find that a message to you could not be delivered, or that a vote in your poll could not be.
+
+Counts still include them, because a count says how many and not who: a post’s count of reactions still counts a reaction of someone you muted, even where the list leaves out their name. In your polls, the totals you see leave out the people you block or mute, so they match your list of voters, and the totals other people see do not change; xref:polls.adoc[Polls] says more.
+
+Blocking changes nothing on GitHub. What a person writes is in their own space there, and what you write is in yours, and diff.me can’t change either.
+
+== Undoing it
+
+Settings lists “Muted people” and “Blocked people”, each with a way to undo. On a profile you muted or blocked, the line that says so has the way to undo it too.

@@ -1,0 +1,33 @@
+= Messages
+
+Messages are private conversations between people on diff.me: two people, or a group.
+
+== Starting one
+
+Press Message on a person’s profile, or use “Message someone new” on the Messages page: type a handle like @sarah, or several, like @sarah, @tom, and press Start. A conversation can have up to 20 other people. Messages is in the rail, with the number of conversations that have something new beside it.
+
+== Who can write to you
+
+Anyone who has joined can start a conversation with you, unless you have blocked them. If you follow them, or you have written to them, the conversation goes to your inbox. If you don’t, it waits under the Requests tab of Messages until you decide, and you are told only by a count. A group is from the people you follow when the person who started it is.
+
+For each request you can:
+
+* *Accept.* Their conversations come to your inbox and stay there.
+* *Decline.* Their conversations are in neither list, nothing of theirs is shown or counted, and they are not told.
+* *Block.* As xref:muting-and-blocking.adoc[Muting and blocking] says.
+
+Writing back to a request accepts it, and so does following the person. Whoever wrote the request is not told that you have seen it.
+
+== What you can send
+
+Words, up to eight pictures, and reactions. Each picture is a PNG, JPEG, GIF, WebP or SVG up to 25 MB, and needs a description, as in a post, or is marked as only decoration. Press Ctrl+Enter to send. Under a message, React offers the five reactions a post takes; choosing another changes yours and choosing the same takes it back. The conversation lists them as small marks with who gave them. Any message has a ⋯ menu with “Report this message”, and xref:reporting-and-what-happens-next.adoc[Reporting, and what happens next] says what follows.
+
+== Seen
+
+Seen is off until you turn it on. In Settings, under Messages, “Let people know when you’ve read their messages” is the choice. When you and the person you write to both have it on, the last message each of you sent says Seen once the other has read it, and in a group “Seen by” and their names. With it off, nobody sees when you have read their messages, and you don’t see when they have read yours.
+
+== Where messages are kept
+
+A message is written to the private space on GitHub of the person who sent it. Each of you keeps your own half, and diff.me shows both as one conversation, so the people you write to read your messages on diff.me and never get into your space. Only you and diff.me can open your private space, as xref:who-can-find-you.adoc[Who can find you] explains. Pictures are kept with the message in the same place.
+
+Messages written while someone stood blocked are never shown to the person who blocked them, even after they unblock them.

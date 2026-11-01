@@ -1,0 +1,27 @@
+= Accessibility
+
+diff.me is meant to be usable with a keyboard, with a screen reader and without the script, on a phone or a wide screen. This is what is built for that, and how it is checked.
+
+== The keyboard
+
+Every page starts with a “Skip to content” link. In lists of posts, the keys for reading move around without the mouse: j and k mark the next and the previous post, Enter opens it, Esc puts the mark away or goes back, l likes it, r replies, n writes a new post, / goes to search, and ? shows the list. The keys do nothing while you are typing, and never with a modifier held, so the keys of your browser and your screen reader stay yours. You can turn them off in the list.
+
+Menus, windows and the small bar over selected words in the box can be used from the keyboard. Escape puts a menu or a window away, and the arrow keys move along a bar or a menu of blocks. When the box opens in a window, the keyboard stays inside it.
+
+== Screen readers
+
+Controls are named by their words, such as the choices of a poll, which are buttons. Results are read in full: “Unbound, 52 percent, 67 votes, your vote”. Every picture has a description that people who cannot see it hear, or is marked as only decoration, because the box does not add a picture until you have said one or the other. This holds for posts, messages and the pictures of a project.
+
+== Without the script
+
+Reading is plain links and words. Writing a post, voting in a poll, searching and messaging work as plain forms before the page has run its script, or without it. Writing has plain fields for the options; a poll’s choices and Undo are forms; the search narrows with a button that applies what you chose; and the buttons that do something are forms.
+
+== Motion, colour and size
+
+diff.me’s own transitions are switched off if your system asks for less motion. Its colours are chosen so that every pairing of text and ground passes the contrast of WCAG level AA, and a test fails if one does not. The browser tests also check that pages do not scroll sideways, on a phone at 390 pixels wide and on screens up to 1920.
+
+== How it is checked
+
+Each page that diff.me’s browser tests show is run through axe, an automated check, against WCAG 2.0, 2.1 and 2.2 level A and AA and its best practices, and the test fails if axe finds a violation. Most pages are checked at 1024, 1440 and 1920 pixels wide, and many on a phone. The same tests check that nothing a person reads uses the language of how diff.me is built.
+
+An automated check does not find everything, so it is a floor and not a promise that every page suits every person.

@@ -16,7 +16,7 @@ A recommendation about you waits for you. You are told in Notifications, “wrot
 
 You can change your mind. On your own profile, a recommendation you show has “Take off my profile”, and one you dismissed is listed under Dismissed with “Show on my profile”. Recommendations waiting for you are listed there too.
 
-Recommendations you show lift your posts a little in how Explore orders them, as xref:how-explore-is-ordered.adoc[How Explore is ordered] says. You can also place the recommendations you show where you like on xref:your-profile-and-your-page.adoc[your page].
+Each recommendation you show lifts your posts in Explore more than a reaction would, up to ten, as xref:how-explore-is-ordered.adoc[How Explore is ordered] says. You can also place the recommendations you show where you like on xref:your-profile-and-your-page.adoc[your page].
 
 == Taking yours back
 

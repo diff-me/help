@@ -1,0 +1,33 @@
+= Search
+
+The search box finds people and posts. Anyone can search, signed in or not. Nothing records what anyone searched for.
+
+== The box
+
+The search box is in the side column of a page, and at the top of the page on a phone. Press / on a page where you are not typing and the keyboard goes to it. As you type, people who match are offered under the box: a handle, a name or a GitHub login. The arrow keys choose, Enter opens their profile, and Escape puts the list away. Enter with nobody chosen searches for what you typed.
+
+== Posts and people
+
+A search has two tabs, Posts and People. Posts finds the words of posts and pieces. People finds a name, a handle, a line, a page, and what a person says they are open to, and lists the most followed first. Above the first posts the search shows the first few people who match.
+
+Who appears follows xref:who-can-find-you.adoc[Who can find you]. People you block or mute never appear.
+
+== Narrowing posts
+
+Under the Posts tab is a row of five choices:
+
+* *Order.* Best match or Newest.
+* *Kind.* Any kind, Writing or Pictures.
+* *When.* Any time, or the past day, week, month or year.
+* *From.* Anyone, People you follow, or a person you pick by name.
+* *Topic.* Any topic, or one.
+
+A choice that is set is filled in, and Clear sets them all back. One line says what is shown, such as “Writing matching “resolver” from Sarah Chen in the past month, the best match first.” New words keep your choices; a search begun on another page starts fresh.
+
+== Narrowing people
+
+Under the People tab are two: “Writes about”, which finds people whose own posts list a topic, and “Open to something”, which finds people who have said what they are open to on their profile. When people are narrowed, each result also shows why it matched. xref:topics.adoc[Topics] and xref:your-profile-and-your-page.adoc[Your profile and your page] say where those come from.
+
+== The address and no script
+
+Every choice is in the address of the search, so you can keep a search, send it to someone or come back to it. Without the script, the row is a plain form with a button that applies what you chose and a field to name a person in.

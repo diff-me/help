@@ -24,4 +24,4 @@ The choice is fixed when you post. An edit can’t widen or narrow it.
 
 == Hiding a reply
 
-On a reply to your post, the ⋯ menu has “Hide this reply”, and “Show this reply again” once it is hidden. Hidden replies are behind “Hidden replies” under the post. The person who wrote it isn’t told. Because this is kept in your public space on GitHub, it is public, as it is on X.
+On a reply to your post, the ⋯ menu has “Hide this reply”, and “Show this reply again” once it is hidden. Hidden replies are behind “Hidden replies” under the post. The person who wrote it isn’t told. Because this is kept in your public space on GitHub, it is public.

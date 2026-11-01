@@ -11,7 +11,7 @@ The strip is the same for everyone, and each line is there only when it is true.
 * *Are you who you seem?* Your handle, “On GitHub since” the year, as a link to your GitHub account, how many people you follow, how many follow you and how many recommendations you show.
 * *What do you write about?* The topics of your own posts, as small tags.
 * *How do you relate to the visitor?* A few faces of people the visitor follows who follow you.
-* *What can they approach you about?* “Open to”, just above Message, when you have said.
+* *What can they approach you about?* “Open to”, in the column beside your name, beneath Follow, Message and ⋯, when you have said.
 * *What can they do?* Follow (“Follow back” when you follow them), Message and ⋯.
 
 You change your name, your line and Open to with “Edit your name and line” on your own profile. Your name is shown beside your picture, and if you leave it empty your handle is your name. Open to is optional: say what you are looking for, like “Staff and principal roles, remote”, and people can find you by it when they search. “Start from my GitHub profile” on that form fills your name and line from your GitHub profile, for you to change; nothing is kept until you press Save. Joining does the same when you first join.

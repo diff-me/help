@@ -1,0 +1,24 @@
+= Reporting, and what happens next
+
+If something breaks xref:the-rules.adoc[the rules], you can tell the people at diff.me who read reports. This article is about what you do and what you hear back; the rules say what is not allowed.
+
+== Reporting
+
+A post, a reply, a message and a person each have a menu with a report in it: “Report this post”, “Report this reply”, “Report this message”, and “Report” and the person’s name on a profile. You can’t report your own. Choose the rule it breaks, or “Something else” and say what is wrong, add a note if it helps, and press “Send report”.
+
+Only the people at diff.me who read reports can see who made a report. The person you reported is not told.
+
+== After you send it
+
+You are thanked, and the same panel offers to mute or block the person, and, where GitHub holds what was reported, to report it to GitHub too. diff.me can stop showing something, but it can’t take it from GitHub, where it is kept in its writer’s own space; GitHub’s rules are GitHub’s to enforce.
+
+People at diff.me read every report. What was decided comes to your notifications, in words that don’t name anyone or say what was done to whom:
+
+* “We looked at your report and acted on it.”
+* “We looked at your report and found nothing that breaks the rules.”
+
+== If it is your post or your account
+
+When diff.me stops showing a post of yours, a note on the post says so and names the rule. When it suspends your account, a note at the top of every page says why. Either way, what you wrote is still yours on GitHub.
+
+You can ask for a second look: “Ask for a second look” on the post, or in the note about your suspension. Someone at diff.me reads it again, and you are told what they decided: the post is shown again, or it stays hidden; the suspension is lifted, or it stands. When you have asked, the note says so. A suspended person can still ask for a second look, and nothing else: they cannot post, reply or message.

@@ -24,11 +24,22 @@ What diff.me does, what it asks of GitHub, and who can see what, in articles gro
 == Finding people and work
 
 * xref:how-explore-is-ordered.adoc[How Explore is ordered]
+* xref:topics.adoc[Topics]
+* xref:search.adoc[Search]
 
 == Your account and privacy
 
 * xref:who-can-find-you.adoc[Who can find you]
+* xref:nobody-is-told-what-you-read.adoc[Nobody is told what you read]
+* xref:messages.adoc[Messages]
+* xref:muting-and-blocking.adoc[Muting and blocking]
+* xref:leaving-diff-me-and-coming-back.adoc[Leaving diff.me, and coming back]
 
 == Safety
 
 * xref:the-rules.adoc[The rules]
+* xref:reporting-and-what-happens-next.adoc[Reporting, and what happens next]
+
+== Policies
+
+* xref:accessibility.adoc[Accessibility]

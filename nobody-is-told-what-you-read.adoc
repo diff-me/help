@@ -1,0 +1,21 @@
+= Nobody is told what you read
+
+What you only look at is never shown to anyone else, and never used about you, unless you choose it. This is how that holds in each place it could have come up.
+
+== Posts and profiles
+
+No one is told that you opened their post or their profile. diff.me has no “who viewed your profile”.
+
+The author of a post can see how many people it reached and how many opened it, in the box under their own post and in Your totals. These are counts of people, and no total ever names anyone. Below ten, a total reads “Fewer than 10”, so it cannot point to one person. Totals change once a day, not as people read, so a number never moves because you opened a link. diff.me keeps nothing that tells who readers were once a day is counted. “How these are counted”, on the page of Your totals, says the same, and xref:your-profile-and-your-page.adoc[Your profile and your page] says where to find it.
+
+== Messages
+
+Messages you have read are not shown to the person who sent them, unless you both choose. “Let people know when you’ve read their messages” is off until you turn it on in Settings. When you and the person you write to both have it on, the last message each of you sent says Seen once the other has read it. xref:messages.adoc[Messages] says more. Someone whose message is waiting among your requests is not told that you have seen it.
+
+What you have seen in Notifications is kept so that the number in the rail goes down, and it is only for you.
+
+== What diff.me recommends
+
+Explore, and anything else that suggests posts or people, learns from what people do: follows, the topics they follow, reactions and recommendations. It never learns from what anyone looks at, and totals never decide what anyone is shown. xref:how-explore-is-ordered.adoc[How Explore is ordered] says what counts.
+
+Nothing records what you search for, either; xref:search.adoc[Search] says more.

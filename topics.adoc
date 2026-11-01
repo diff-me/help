@@ -1,0 +1,27 @@
+= Topics
+
+A topic says what a post is about, in a few words. People use them to find posts, and you can follow a topic to have it among the first things you see above Explore.
+
+== Giving a post topics
+
+A post can list up to five topics. In the box, type # and a few letters at the start of a word and diff.me offers topics. Choosing one takes the # and its letters out of your words and puts the topic on the row under the box instead. You can also press ⋯ and choose Topics, where you type a topic or choose from those offered: topics on your public repositories on GitHub, and topics other people already use on diff.me. A topic is up to 48 characters.
+
+A topic is shown as its writer wrote it, such as “Garbage collection” or “DNS”. It is matched in GitHub’s form: lower case, with a hyphen where there were spaces, and only the letters a to z and the digits. So “Garbage Collection” and “garbage-collection” are the same topic, and its page is named by that form. The topics of your own posts also appear on your profile, as small tags.
+
+== A topic’s page
+
+A topic’s page has its name, how many posts list it and how many people follow it, and Follow. Anyone can read it. Its tabs are:
+
+* *Well received.* The posts that list the topic, in the order Explore uses, as xref:how-explore-is-ordered.adoc[How Explore is ordered] says. It leaves out the people you follow, whose posts are on Home.
+* *Newest.* Every post that lists the topic, the newest first.
+* *Writing.* The pieces that list it.
+
+“Search the posts about” the topic goes to a search narrowed to it; xref:search.adoc[Search] says how.
+
+== Following a topic
+
+Follow on a topic’s page, or beside it on a list, adds it to your topics. Nobody sees which topics you follow; they are kept in your private space on GitHub. Topics you follow stand in a row above Explore, after All, Writing and Pictures, in the order you chose. Each chip opens the topic’s page, and diff.me never reorders the row for you. A topic you follow also raises the posts about it for you in Explore.
+
+== Finding topics
+
+“+ Find topics” at the end of the row opens All topics. It lists the topics written about this week, each with how many different people wrote about it, so that one person posting often does not make a subject, and a Follow button. If you have joined, it also lists the topics you follow, with “Move up”, “Move down” and a way to unfollow, which is the order of the row above Explore. On Explore, “Topics this week” in the side column shows the same, with a link to All topics.
