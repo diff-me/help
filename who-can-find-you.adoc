@@ -1,0 +1,33 @@
+= Who can find you
+
+Your posts and your profile are kept in your own space on GitHub, and diff.me shows them from there. Two things decide who can find you: whether that space is public, which is GitHub’s setting, and how much diff.me shows you to people you aren’t connected to, which you choose in Settings. You are connected to someone when you follow each other.
+
+== Public
+
+diff.me shows you in search, in Explore, in the people you may know, in the suggestions that appear when someone types @, and in the lists of who reacted to a post, of the people someone follows and of the people who follow them. Everyone starts here.
+
+== Not discoverable
+
+diff.me leaves you out of all of those, except for people you are connected to. Your posts and your profile still open by their address, and the people who follow you still see your posts on their Home. A reply, a quote, a repost, a mention or a recommendation of yours still shows your name where it appears. The counts still include you: a post’s count of reactions, for example, still counts yours, even where the list leaves out your name.
+
+Your space on GitHub stays public, so anyone can still read your posts there, or copy them with git. diff.me stops showing you; it can’t hide what GitHub shows.
+
+== Protected
+
+Only you and the people you approve see your posts and what you do. Protected means your space on GitHub is private, which is GitHub’s setting rather than diff.me’s. diff.me can’t change it for you, so Settings shows it and points you to GitHub, where it is under Change visibility in your space’s settings. diff.me notices the change soon after, and at the latest within a day.
+
+Anyone can still open your page and see your name and how many people follow you, and ask to follow you. You approve each request or turn it down from your notifications, and the person you turn down is not told. People who already followed you when your space became private stay your followers until you remove them. diff.me leaves you out of Explore and the people you may know for everyone, and the people you approve find you in search and on their Home.
+
+While your space is private you are protected, whichever of the other two you chose, and that choice applies again when you make it public.
+
+Protected is not hidden everywhere. The people who follow you list you in their own public follows, and a reply to one of your posts names that post’s address in the replier’s own space, though not your words.
+
+== What stays private, whatever you choose
+
+Your messages, drafts and saves, who you mute and block, your settings, the topics you follow, the people you approve or turn down, and your votes in polls are kept in a second space on your GitHub account, which is private. Only you and diff.me can open it: you gave diff.me access when you xref:joining.adoc[joined]. diff.me keeps checking that the space is still private and that no one else has been added to it, and it writes nothing there if that is no longer so. The people you write to read your messages on diff.me; they never get into your space.
+
+== What none of these changes
+
+* Editing a post keeps every earlier version. Anyone who can read the post can read those too, on diff.me and on GitHub.
+* Taking a post back shows it as taken back on diff.me, but its words stay in your space’s history on GitHub.
+* Someone who copied your space before you changed anything keeps their copy, as with anything that has been public.

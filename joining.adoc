@@ -1,0 +1,32 @@
+= Joining, and what diff.me asks of GitHub
+
+Everything you write on diff.me is kept in your own space on GitHub, so it is yours to take with you. Joining is how that space comes to be: diff.me makes it on your GitHub account, and asks GitHub for the access it needs to it and no more. Here is what you are asked, in the order you are asked it, and why.
+
+== Signing in, your handle and your age
+
+You sign in on GitHub’s own page, and diff.me uses your GitHub account to know who you are. It never sees your GitHub password. Then you choose your handle, the name people find you by (diff.me/your-handle), and say that you are old enough. diff.me keeps the yes and never the date you gave.
+
+== Two places on your GitHub account
+
+diff.me makes two repositories on your account, which diff.me calls your two places. `.diffme` is public: your posts, reactions, follows, recommendations and profile are written to it. `.diffme-private` is private: your messages, drafts, saves, mutes, blocks and settings are written to it, and only you and diff.me can open it.
+
+Both belong to your account, not to diff.me: you can read them, copy them or delete them on GitHub as you can any of your repositories. diff.me always makes them itself and never takes over a repository you already had. If your account already has something with one of those names, joining asks you to pick another name.
+
+== The wide access GitHub asks for first
+
+GitHub lets diff.me act on your account only where diff.me is installed, and it will not install diff.me on selected repositories when none is selected. Your two places do not exist yet, so the first thing GitHub asks you to give diff.me is access to all your repositories.
+
+That is more than diff.me needs, so diff.me asks for it only for as long as it takes. It uses that access to make your two places and, if a name you chose is already taken, to see which names your account uses. As soon as your two places are made, diff.me takes that access away itself. If you stop part way, diff.me takes it away soon after.
+
+Then GitHub asks you once more, this time for just your two places. They are already ticked, so it is one click. Joining finishes when diff.me finds that its access is to those two and no others. If it is wider, diff.me tells you so and asks again.
+
+== What diff.me can reach afterwards
+
+* *Your two places, and nothing else of yours on GitHub.* diff.me reads them in the background to show your writing to other people. It does that with a token that GitHub makes for diff.me, that can only read, and that names only your two places. It cannot open your other repositories, so your private ones stay private to it.
+* *Writing, only when you ask.* When you post, react, follow or message, diff.me writes to your places with your own sign-in, so it is written as you. That sign-in is kept in a sealed cookie in your browser. diff.me keeps no token of yours in its own database.
+* *Not their settings.* diff.me cannot make a place public or private, or delete one. GitHub keeps both behind a permission, Administration, that diff.me does not ask for. That is why you make your space private on GitHub yourself, as xref:who-can-find-you.adoc[Who can find you] says.
+* *What it asks GitHub for.* Three permissions: to read and write the contents of your two places, to see their basic details, and to make a place on your account, which diff.me does only when you join.
+
+== Taking the access away
+
+You can take diff.me’s access away whenever you like, in GitHub’s settings. diff.me then forgets what it had read from your two places. They stay on your account with everything you wrote, and giving diff.me access to them again brings it all back.

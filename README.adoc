@@ -1,0 +1,19 @@
+= diff.me help
+
+What diff.me does, what it asks of GitHub, and who can see what, in articles grouped by what people ask. diff.me shows them at its Help page, and every change to one is a change to its file here.
+
+== How diff.me works
+
+* xref:joining.adoc[Joining, and what diff.me asks of GitHub]
+
+== Finding people and work
+
+* xref:how-explore-is-ordered.adoc[How Explore is ordered]
+
+== Your account and privacy
+
+* xref:who-can-find-you.adoc[Who can find you]
+
+== Safety
+
+* xref:the-rules.adoc[The rules]

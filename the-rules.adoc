@@ -1,0 +1,31 @@
+= The rules
+
+diff.me is a place for engineers to talk about their work. These are the rules everyone here follows, so that it stays a place worth talking in.
+
+== What is not allowed
+
+. *Harassment or threats.* Do not harass anyone, follow someone to hurt them, or threaten them.
+. *Hate.* Do not attack people for who they are: their race, ethnicity, nationality, religion, sex, gender, sexuality, disability or age.
+. *Spam or scams.* Do not post the same thing again and again, flood people with links, or try to trick anyone out of money or access.
+. *Pretending to be someone else.* Do not pretend to be another person or a company.
+. *Someone’s private information.* Do not share what someone has not shared themselves: addresses, phone numbers, identity papers, private messages or private code and keys.
+. *Sexual or violent content.* Do not post sexual content, or violence shown to shock or to glorify it.
+. *Something illegal.* Do not post what is against the law, or help anyone break it.
+
+== How to tell diff.me
+
+Every post, reply, message and person has a menu with *Report* in it. Choose the rule it breaks, or *Something else* and say what is wrong, and add a note if it helps. Reports are private: the person you report is never told that you did, and only the people at diff.me who read reports can see who made one. You will be told what was decided, and not what was done to whom. You can also mute or block anyone yourself, at any time.
+
+== What diff.me does
+
+People at diff.me read every report and look at what was reported as it stands. When a rule is broken, diff.me can:
+
+* *Hide a post or a reply.* No one but the person who wrote it is shown it. They are told which rule it broke, and they can ask for a second look.
+* *Suspend a person.* None of their posts are shown to anyone else, and they cannot post, reply or message while they are suspended. They are told why, and they can ask for a second look.
+* *Do nothing,* when nothing breaks the rules. The person who reported is told so.
+
+Every decision is kept with the rule it rests on and the words of the person who made it.
+
+== What you write is yours
+
+Everything you write on diff.me is kept in your own space on GitHub, and it stays there. So diff.me stops _showing_ what breaks these rules, here, and cannot take it away from GitHub. If something also breaks GitHub’s rules, you can report it to GitHub too: the report form links to GitHub’s own way of reporting that account or that work, and https://github.com/contact/report-abuse[GitHub’s own page] is always there.

@@ -1,0 +1,30 @@
+= How Explore is ordered
+
+Explore is where you find what is good out there that you are not already seeing. This page says what it shows, what puts a post first, and how what you follow changes the order for you.
+
+== What it shows
+
+Posts and quotes written in the last two weeks, by people from all of diff.me. Your own posts and the posts of the people you follow are left out, because Home already shows them, and so are the people you blocked or muted and the people who chose not to be found by someone they are not connected to. It goes back two weeks, and no further.
+
+== What earns a post its place
+
+* *Reactions from other people.* Every person who reacts to a post, with any of the five reactions, lifts it a little. The author’s own reaction does not count.
+* *Recommendations the author shows.* People write recommendations of one another, and each person chooses which of them to show on their profile. A post by someone who shows recommendations is lifted more than a reaction would lift it, up to ten recommendations; after that, more make no difference.
+* *Age.* The older a post is, the lower it sits. A new post with a few reactions can stand above an older one with many, and every post sinks in the end, so Explore keeps changing.
+
+== What raises a post for you
+
+When you have an account, two things you chose lift a post further, and nothing else does.
+
+* *People you follow.* A post that people you follow reacted to or passed on is lifted by four reactions’ worth for each of them, for as many as five. Two people you follow liking a post puts it clearly above an equal post nobody you follow touched, while one of them alone does not put it above a post that many people reacted to. Only the most recent things your most recently followed people did are looked at.
+* *Topics you follow.* Among the best posts of each topic you follow, a post is lifted by five reactions’ worth.
+
+When people you follow or a topic you follow brought a post to you, the post says so, in a line above its writer: who liked it, who passed it on, or the topic. A post without such a line is there for the network’s order alone.
+
+== What never counts
+
+Explore does not look at what anyone opened or read, how long anyone looked at anything, or what you searched for. It is made from what people did: the reactions, the recommendations and the follows, and the topics you chose to follow. The list does not shuffle while you read it: when you ask for more, you get the posts that follow the ones you have seen.
+
+== When you are not signed in
+
+You see the order as everyone has it before it is raised for anyone, and no post carries a line saying why.
